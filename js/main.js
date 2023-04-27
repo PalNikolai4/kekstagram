@@ -28,13 +28,3 @@ const getRandomPositiveInteger = (min = 0, max = 100) => {
 
   return Math.round(Math.random() * (max - min) + min);
 }
-
-getRandomPositiveInteger(10, 99);
-
-
-/*
- * Fn returns random positive integer in the range from min to max
- * @param {number} min default = 0
- * @param {number} max default = 100
- * @returns {number}
-*/
