@@ -9,8 +9,10 @@ const getRandomPositiveInteger = (min = 0, max = 100) => {
     min = 0;
   }
 
-  if (!Number(max)) {
-    max = 10;
+  if (!Number(max) && Number(max) !== 0) {
+    max = 100;
+  } else if (!Number(max) && Number(max) === 0) {
+    max = 0;
   }
 
   min = Math.abs(min);
@@ -20,6 +22,7 @@ const getRandomPositiveInteger = (min = 0, max = 100) => {
       max += 1;
     }
 
+  /*Эта проверка не нужна, т.к. сама формула исключает появление отрицательного результата, но оставлю её для предотвращения непредвиденного результата*/
   if (min > max) {
     let box = min;
     min = max;
