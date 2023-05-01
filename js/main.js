@@ -1,8 +1,8 @@
 /**
- * Fn returns random positive integer in the range from min to max
- * @param {number} min default = 0
- * @param {number} max default = 100
- * @returns {number}
+ * Fn returns a random positive integer from the range
+ * @param {Number} min default = 0
+ * @param {Number} max default = 100
+ * @returns {Number}
  */
 const getRandomPositiveInteger = (min = 0, max = 100) => {
   if (!Number(min)) {
@@ -19,15 +19,16 @@ const getRandomPositiveInteger = (min = 0, max = 100) => {
   max = Math.abs(max);
 
   if (min === max) {
-      max += 1;
-    }
+    max += 1;
+  }
 
   /*Эта проверка не нужна, т.к. сама формула исключает появление отрицательного результата, но оставлю её для предотвращения непредвиденного результата*/
   if (min > max) {
-    let box = min;
+    const box = min;
     min = max;
     max = box;
   }
 
   return Math.round(Math.random() * (max - min) + min);
-}
+};
+getRandomPositiveInteger();
