@@ -1,11 +1,10 @@
-'use strict'
 /**
  * Fn checks the length of a string
  * @param {String} string
  * @param {Number} maxLength
  * @returns {Boolean}
  */
-const checkStringLength = (string, maxLength) => string.toString().length <= maxLength ? true : false;
+const checkStringLength = (string, maxLength) => string.toString().length <= maxLength;
 
 /**
  * Fn returns a random positive integer from the range
@@ -40,4 +39,6 @@ const getRandomPositiveInteger = (min = 0, max = 100) => {
 
   return Math.round(Math.random() * (max - min) + min);
 };
+
+checkStringLength();
 getRandomPositiveInteger();
