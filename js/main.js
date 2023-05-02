@@ -1,3 +1,12 @@
+'use strict'
+/**
+ * Fn checks the length of a string
+ * @param {String} string
+ * @param {Number} maxLength
+ * @returns {Boolean}
+ */
+const checkStringLength = (string, maxLength) => string.toString().length <= maxLength ? true : false;
+
 /**
  * Fn returns a random positive integer from the range
  * @param {Number} min default = 0
