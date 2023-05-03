@@ -4,8 +4,7 @@
  * @param {Number} maxLength
  * @returns {Boolean}
  */
-const checkStringLength = (string, maxLength) => string.toString().length <= maxLength;
-
+const checkStringLength = (string, maxLength) => string.length <= maxLength;
 /**
  * Fn returns a random positive integer from the range
  * @param {Number} min default = 0
@@ -40,5 +39,5 @@ const getRandomPositiveInteger = (min = 0, max = 100) => {
   return Math.round(Math.random() * (max - min) + min);
 };
 
-checkStringLength();
+
 getRandomPositiveInteger();
