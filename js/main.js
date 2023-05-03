@@ -4,7 +4,8 @@
  * @param {Number} maxLength
  * @returns {Boolean}
  */
-// const checkStringLength = (string, maxLength) => string.length <= maxLength;
+const checkStringLength = (string = '', maxLength = 100) => string.toString().length <= maxLength;
+
 /**
  * Fn returns random positive integer in the range from min to max
  * @param {number} min default = 0
@@ -29,7 +30,6 @@ const getRandomPositiveInteger = (min = 0, max = 100) => {
       max += 1;
     }
 
-  /*Эта проверка не нужна, т.к. сама формула исключает появление отрицательного результата, но оставлю её для предотвращения непредвиденного результата*/
   if (min > max) {
     let box = min;
     min = max;
@@ -39,5 +39,5 @@ const getRandomPositiveInteger = (min = 0, max = 100) => {
   return Math.round(Math.random() * (max - min) + min);
 };
 
-
+checkStringLength()
 getRandomPositiveInteger();
