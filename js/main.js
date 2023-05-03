@@ -31,11 +31,11 @@ const getRandomPositiveInteger = (min = 0, max = 100) => {
   max = Math.abs(max);
 
   if (min === max) {
-    max += 1;
-  }
+      max += 1;
+    }
 
   if (min > max) {
-    const box = min;
+    let box = min;
     min = max;
     max = box;
   }
@@ -45,13 +45,13 @@ const getRandomPositiveInteger = (min = 0, max = 100) => {
 
 //Доделать
 const getUniqueNum = (min = 0, max = 25) => {
-  const num = min;
+  let num = min;
   while (min < max) {
     min ++;
     return min;
   }
 
-};
+}
 
 //Доделать
 const getRandomUniqueNum = (min, max) => {
@@ -61,37 +61,41 @@ const getRandomUniqueNum = (min, max) => {
     return num;
   }
 
-};
+}
 
 /**
  * Fn returns random element from array
  * @param {array} array
  * @returns
  */
-const getRandomElemArray = (array) => array[getRandomPositiveInteger(0, array.length - 1)];
+const getRandomElemArray = (array) => { array[getRandomPositiveInteger(0, array.length - 1)] }
 
 /**
  * Fn returns the comment as an object
  * @returns {object}
  */
-const getPhotoСomment = () => ({
-  id: getRandomUniqueNum(1, 100),
-  avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
-  message: getRandomElemArray(MESSAGE_COMMENT),
-  name: getRandomElemArray(NAMES_AUTHOR_COMMENTS)
-});
+const getPhotoСomment = () => {
+  return {
+    id: getRandomUniqueNum(1, 100),
+    avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
+    message: getRandomElemArray(MESSAGE_COMMENT),
+    name: getRandomElemArray(NAMES_AUTHOR_COMMENTS)
+  }
+}
 
 /**
  * Fn returns the description of the photo as an object
  * @returns {object}
  */
-const descriptionPhoto = () => ({
-  id: getUniqueNum(1, 25),
-  url: `photos/${getUniqueNum(1, 25)}.jpg`,
-  description: getRandomElemArray(DESCRIPTIONS),
-  likes: getRandomPositiveInteger(15, 200),
-  comments: Array.from({length: getRandomPositiveInteger(1, 5)}, getPhotoСomment)
-});
+const descriptionPhoto = () => {
+  return {
+    id: getUniqueNum(1, 25),
+    url: `photos/${getUniqueNum(1, 25)}.jpg`,
+    description: getRandomElemArray(DESCRIPTIONS),
+    likes: getRandomPositiveInteger(15, 200),
+    comments: Array.from({length: getRandomPositiveInteger(1, 5)}, getPhotoСomment)
+  }
+}
 
 const arrayDescriptionPhoto = Array.from({length: 5}, descriptionPhoto);
 console.log(arrayDescriptionPhoto);
