@@ -16,14 +16,16 @@ const checkStringLength = (string = '', maxLength = 100) => string.toString().le
  * @param {number} max default = 100
  * @returns {number}
  */
-const getRandomPositiveInteger = (min = 0, max = 100) => {
-  if (!Number(min)) {
+const getRandomPositiveInt = (min = 0, max = 100) => {
+  if (!parseInt(min, 10)) {
     min = 0;
   }
 
-  if (!Number(max) && Number(max) !== 0) {
+  if (!parseInt(max, 10) && parseInt(max, 10) !== 0) {
     max = 100;
-  } else if (!Number(max) && Number(max) === 0) {
+  }
+
+  if (!parseInt(max, 10) && parseInt(max, 10) === 0) {
     max = 0;
   }
 
@@ -31,11 +33,11 @@ const getRandomPositiveInteger = (min = 0, max = 100) => {
   max = Math.abs(max);
 
   if (min === max) {
-      max += 1;
-    }
+    max += 1;
+  }
 
   if (min > max) {
-    let box = min;
+    const box = min;
     min = max;
     max = box;
   }
@@ -47,64 +49,63 @@ const getRandomPositiveInteger = (min = 0, max = 100) => {
 const getUniqueNum = (min = 0, max = 25) => {
   let num = min;
   while (min < max) {
-    min ++;
+    min++;
     return min;
   }
 
-}
+};
 
 //Доделать
 const getRandomUniqueNum = (min, max) => {
   let num = [];
   while (num.length < max) {
-    num = getRandomPositiveInteger(min, max);
+    num = getRandomPositiveInt(min, max);
     return num;
   }
 
-}
+};
 
 /**
  * Fn returns random element from array
  * @param {array} array
  * @returns
  */
-const getRandomElemArray = (array) => { array[getRandomPositiveInteger(0, array.length - 1)] }
+const getRandomElemArray = (array) => array[getRandomPositiveInt(0, array.length - 1)];
 
 /**
  * Fn returns the comment as an object
  * @returns {object}
  */
-const getPhotoСomment = () => {
-  return {
-    id: getRandomUniqueNum(1, 100),
-    avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
-    message: getRandomElemArray(MESSAGE_COMMENT),
-    name: getRandomElemArray(NAMES_AUTHOR_COMMENTS)
+const getPhotoСomment = () => ({
+  id: getRandomUniqueNum(1, 100),
+  avatar: `img/avatar-${getRandomPositiveInt(1, 6)}.svg`,
+  message: getRandomElemArray(MESSAGE_COMMENT),
+  name: getRandomElemArray(NAMES_AUTHOR_COMMENTS)
 });
 
 /**
- * Fn returns an array of comment objects
+ * Fn returns an array of objects of the specified length
+ * @param {function} fn
  * @param {number} quantity
  * @returns {array}
  */
-const getQuantityComments = (quantity) => {
+const getArrayObj = (fn, quantity) => {
   parseInt(quantity, 10) ? quantity : quantity = getRandomPositiveInt(1, 5);
-  return Array.from({ length: quantity }, getPhotoСomment);
+  return Array.from({ length: quantity }, fn);
 };
 
 /**
  * Fn returns the description of the photo as an object
  * @returns {object}
  */
-const descriptionPhoto = () => {
-  return {
-    id: getUniqueNum(1, 25),
-    url: `photos/${getUniqueNum(1, 25)}.jpg`,
-    description: getRandomElemArray(DESCRIPTIONS),
-    likes: getRandomPositiveInteger(15, 200),
-    comments: Array.from({length: getRandomPositiveInteger(1, 5)}, getPhotoСomment)
-  }
-}
+const getDescriptionPhoto = () => ({
+  id: getUniqueNum(1, 25),
+  url: `photos/${getUniqueNum(1, 25)}.jpg`,
+  description: getRandomElemArray(DESCRIPTIONS),
+  likes: getRandomPositiveInt(15, 200),
+  comments: getArrayObj(getPhotoСomment)
+});
 
-const arrayDescriptionPhoto = Array.from({length: 5}, descriptionPhoto);
-console.log(arrayDescriptionPhoto);
+const getArrayDescriptions = getArrayObj(getDescriptionPhoto);
+
+console.log(getArrayDescriptions);
