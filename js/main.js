@@ -80,8 +80,17 @@ const getPhotoСomment = () => {
     avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
     message: getRandomElemArray(MESSAGE_COMMENT),
     name: getRandomElemArray(NAMES_AUTHOR_COMMENTS)
-  }
-}
+});
+
+/**
+ * Fn returns an array of comment objects
+ * @param {number} quantity
+ * @returns {array}
+ */
+const getQuantityComments = (quantity) => {
+  parseInt(quantity, 10) ? quantity : quantity = getRandomPositiveInt(1, 5);
+  return Array.from({ length: quantity }, getPhotoСomment);
+};
 
 /**
  * Fn returns the description of the photo as an object
