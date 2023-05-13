@@ -23,6 +23,10 @@ const getPhotoСomment = () => ({
   name: getRandomElemArray(NAMES_AUTHOR_COMMENTS)
 });
 
+const getArrayGivenLengthComments = (fn, min = 5, max = 25) => {
+	return Array.from({ length: getRandomPositiveInt(min, max) }, fn);
+};
+
 /**
  * Fn returns the description of the photo as an object
  * @returns {object}
@@ -32,7 +36,7 @@ const getDescriptionPhoto = () => ({
   url: `photos/${descriptionPhotoURL()}.jpg`,
   description: getRandomElemArray(DESCRIPTIONS),
   likes: getRandomPositiveInt(15, 200),
-  comments: getArrayGivenLength(getPhotoСomment)
+  comments: getArrayGivenLengthComments(getPhotoСomment)
 });
 
 export {getDescriptionPhoto};

@@ -1,5 +1,6 @@
 import { getArrayGivenLength } from "./utill.js";
 import { getDescriptionPhoto } from "./data.js";
+import { showFullPhoto } from "./full-picture.js";
 
 const templatePicture = document.querySelector('#picture').content.querySelector('.picture');
 const picturesContainer = document.querySelector('.pictures');
@@ -11,6 +12,7 @@ arrayComment.forEach(({id, url, description, likes, comments}) => {
   thumbnails.querySelector('.picture__img').src = url;
   thumbnails.querySelector('.picture__likes').textContent = likes;
   thumbnails.querySelector('.picture__comments').textContent = comments.length;
+  showFullPhoto(thumbnails);
   fragment.append(thumbnails);
 })
 
