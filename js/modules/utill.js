@@ -92,9 +92,9 @@ const getRandomElemArray = (array) => array[getRandomPositiveInt(0, array.length
  * @param {number} quantity
  * @returns {array}
  */
-const getArrayObj = (fn, quantity) => {
-	parseInt(quantity, 10) ? quantity : quantity = getRandomPositiveInt(1, 5);
+const getArrayGivenLength = (fn, quantity) => {
+	(parseInt(quantity, 10) && quantity !== 0) ? quantity : quantity = getRandomPositiveInt(1, 25);
 	return Array.from({ length: quantity }, fn);
 };
 
-export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, getArrayObj }
+export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, getArrayGivenLength }
