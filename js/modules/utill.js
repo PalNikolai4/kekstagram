@@ -86,15 +86,4 @@ const getRandomUniqueNum = (min, max) => {
  */
 const getRandomElemArray = (array) => array[getRandomPositiveInt(0, array.length - 1)];
 
-/**
- * Fn returns an array of objects of the specified length
- * @param {function} fn
- * @param {number} quantity default in the range from 1 to 25
- * @returns {array}
- */
-const getArrayGivenLength = (fn, quantity) => {
-	(parseInt(quantity, 10) && quantity !== 0) ? quantity : quantity = getRandomPositiveInt(1, 25);
-	return Array.from({ length: quantity }, fn);
-};
-
-export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, getArrayGivenLength }
+export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray }

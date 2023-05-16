@@ -1,7 +1,7 @@
-import { getUniqueNum } from "./utill.js";
-import { getRandomUniqueNum } from "./utill.js";
 import { getRandomPositiveInt } from "./utill.js";
 import { getRandomElemArray } from "./utill.js";
+import { getUniqueNum } from "./utill.js";
+import { getRandomUniqueNum } from "./utill.js";
 
 const DESCRIPTIONS = ['Я в коридоре', 'Зачем худеть? Пять минут фотошопа и ты прекрасен', 'Глаза боятся, рука делает', 'Трудно быть кэжуал, когда ты лакшери', 'Красота в простате', 'Моя кровать — это волшебное место. Стоит улечься, как я вспоминаю все, что мне нужно было сделать', 'В жареной картошке нет слова «мы». Этот тот случай, когда каждый за себя', 'Знаю, что голоса в моей голове не настоящие, но иногда их идеи потрясающие', 'Шоколад не задает глупых вопросов, шоколад понимает меня с полуслова', 'В доме, где есть котлеты, всегда уютно'];
 const MESSAGE_COMMENT = ['Всё отлично!', 'В целом всё неплохо. Но не всё.', 'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально', 'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше', 'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше', 'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!', 'У вас редкий талант - испортить то, что уже испорчено', 'Если больной очень хочет жить, врачи бессильны', 'Оптимизм – это недостаток информации', 'Меня теперь даже склероз не спасёт'];
@@ -22,20 +22,30 @@ const getPhotoСomment = () => ({
   name: getRandomElemArray(NAMES_AUTHOR_COMMENTS)
 });
 
-const getArrayGivenLengthComments = (fn, min = 1, max = 7) => {
-	return Array.from({ length: getRandomPositiveInt(min, max) }, getPhotoСomment);
+const getArrayGivenLength = (fn, min = 1, max = 25) => {
+  return Array.from({ length: getRandomPositiveInt(min, max) }, fn);
 };
 
 /**
  * Fn returns the description of the photo as an object
  * @returns {object}
  */
-const getDescriptionPhoto = () => ({
-  id: descriptionPhotoID(),
-  url: `photos/${descriptionPhotoURL()}.jpg`,
-  description: getRandomElemArray(DESCRIPTIONS),
-  likes: getRandomPositiveInt(15, 200),
-  comments: getArrayGivenLengthComments()
-});
+const getDescriptionPhoto = () => {
+  return {
+    id: descriptionPhotoID(),
+    url: `photos/${descriptionPhotoURL()}.jpg`,
+    description: getRandomElemArray(DESCRIPTIONS),
+    likes: getRandomPositiveInt(15, 200),
+    comments: getArrayGivenLength(getPhotoСomment, 5, 10)
+  }
+};
 
-export {getDescriptionPhoto};
+/**
+ * Fn returns an array of objects of the specified length
+ * @param {number} min default 1
+ * @param {number} max default 25
+ * @returns {array}
+ */
+const getArrayDescriptionPhoto = (min = 1, max = 25) => Array.from({ length: getRandomPositiveInt(min, max) }, getDescriptionPhoto);
+
+export { getArrayDescriptionPhoto };

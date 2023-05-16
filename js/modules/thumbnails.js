@@ -1,27 +1,22 @@
-import { getDescriptionPhoto } from "./data.js";
-import { getArrayGivenLength } from "./utill.js";
+import { getArrayDescriptionPhoto } from "./data.js";
 import { showFullPhoto } from "./full-picture.js";
 
-
 const picturesContainer = document.querySelector('.pictures');
-const bigPictureSocial = document.querySelector('.big-picture__social');
-const socialCommentsList = document.querySelector('.social__comments');
 const templatePicture = document.querySelector('#picture').content.querySelector('.picture');
 
-
 const fragment = document.createDocumentFragment();
-const arrayDescriptions = getArrayGivenLength(getDescriptionPhoto);
+const arrayDescriptionsPhotos = getArrayDescriptionPhoto();
 
 
-arrayDescriptions.forEach(({ id, url, description, likes, comments }) => {
-  const thumbnails = templatePicture.cloneNode(true);
-  thumbnails.querySelector('.picture__img').src = url;
-  thumbnails.querySelector('.picture__likes').textContent = likes;
-  thumbnails.querySelector('.picture__comments').textContent = socialCommentsList.children.length + comments.length;
+arrayDescriptionsPhotos.forEach(({ id, url, description, likes, comments }) => {
+  const picture = templatePicture.cloneNode(true);
+  picture.querySelector('.picture__img').src = url;
+  console.log(picture.src)
 
-  showFullPhoto(thumbnails, comments);
-  fragment.append(thumbnails);
-})
+  picture.querySelector('.picture__comments').textContent = comments.length;
 
+  picture.querySelector('.picture__likes').textContent = likes;
 
+  fragment.append(picture);
+});
 picturesContainer.append(fragment);
