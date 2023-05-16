@@ -8,7 +8,7 @@ const closeFullPhoto = () => {
   })
 }
 
-const showFullPhoto = (item) => {
+const showFullPhoto = (item, comments) => {
   item.addEventListener('click', function (evt) {
     evt.preventDefault();
     bigPictureContainer.classList.remove('hidden');
@@ -16,7 +16,7 @@ const showFullPhoto = (item) => {
     bigPictureSocial.querySelector('.likes-count').textContent = item.querySelector('.picture__likes').textContent;
     bigPictureSocial.querySelector('.comments-count').textContent = item.querySelector('.picture__comments').textContent;
     closeFullPhoto();
-  })
+    })
 }
 
 export {showFullPhoto}

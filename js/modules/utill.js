@@ -89,7 +89,7 @@ const getRandomElemArray = (array) => array[getRandomPositiveInt(0, array.length
 /**
  * Fn returns an array of objects of the specified length
  * @param {function} fn
- * @param {number} quantity
+ * @param {number} quantity default in the range from 1 to 25
  * @returns {array}
  */
 const getArrayGivenLength = (fn, quantity) => {

@@ -1,29 +1,27 @@
-import { getArrayGivenLength } from "./utill.js";
 import { getDescriptionPhoto } from "./data.js";
+import { getArrayGivenLength } from "./utill.js";
 import { showFullPhoto } from "./full-picture.js";
 
-const templatePicture = document.querySelector('#picture').content.querySelector('.picture');
-const picturesContainer = document.querySelector('.pictures');
-const fragment = document.createDocumentFragment();
-const arrayComment = getArrayGivenLength(getDescriptionPhoto);
 
-arrayComment.forEach(({id, url, description, likes, comments}) => {
+const picturesContainer = document.querySelector('.pictures');
+const bigPictureSocial = document.querySelector('.big-picture__social');
+const socialCommentsList = document.querySelector('.social__comments');
+const templatePicture = document.querySelector('#picture').content.querySelector('.picture');
+
+
+const fragment = document.createDocumentFragment();
+const arrayDescriptions = getArrayGivenLength(getDescriptionPhoto);
+
+
+arrayDescriptions.forEach(({ id, url, description, likes, comments }) => {
   const thumbnails = templatePicture.cloneNode(true);
   thumbnails.querySelector('.picture__img').src = url;
   thumbnails.querySelector('.picture__likes').textContent = likes;
-  thumbnails.querySelector('.picture__comments').textContent = comments.length;
-  showFullPhoto(thumbnails);
+  thumbnails.querySelector('.picture__comments').textContent = socialCommentsList.children.length + comments.length;
+
+  showFullPhoto(thumbnails, comments);
   fragment.append(thumbnails);
 })
 
-picturesContainer.append(fragment);
 
-/*
-    <a href="#" class="picture">
-      <img class="picture__img" src="" width="182" height="182" alt="Случайная фотография">
-      <p class="picture__info">
-        <span class="picture__comments"></span>
-        <span class="picture__likes"></span>
-      </p>
-    </a>
-*/
+picturesContainer.append(fragment);
