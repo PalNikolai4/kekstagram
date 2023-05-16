@@ -11,12 +11,14 @@ const arrayDescriptionsPhotos = getArrayDescriptionPhoto();
 arrayDescriptionsPhotos.forEach(({ id, url, description, likes, comments }) => {
   const picture = templatePicture.cloneNode(true);
   picture.querySelector('.picture__img').src = url;
-  console.log(picture.src)
 
-  picture.querySelector('.picture__comments').textContent = comments.length;
+  picture.querySelector('.picture__comments').textContent = comments.length + document.querySelector('.big-picture').querySelectorAll('.social__comment').length;
+  const lengggth = document.querySelector('.big-picture').querySelector('.social__comments');
 
   picture.querySelector('.picture__likes').textContent = likes;
 
+
+  showFullPhoto(picture);
   fragment.append(picture);
 });
 picturesContainer.append(fragment);
