@@ -7,13 +7,16 @@
 const checkStringLength = (string = '', maxLength = 100) => string.toString().length <= maxLength;
 
 /**
- * Fn returns random positive integer in the range from min to max
+ * Fn returns random positive integer in the range from min to max. If quantity = true, Fn return quantity.
  * @param {number} min default = 0
  * @param {number} max default = 100
+ * @param {number} quantity
  * @returns {number}
  */
-const getRandomPositiveInt = (min = 0, max = 100) => {
-	if (!parseInt(min, 10)) {
+const getRandomPositiveInt = (min = 0, max = 100, quantity) => {
+	if (quantity && parseInt(quantity, 10) >= 0) return quantity;
+
+  if (!parseInt(min, 10)) {
 		min = 0;
 	}
 
@@ -86,4 +89,16 @@ const getRandomUniqueNum = (min, max) => {
  */
 const getRandomElemArray = (array) => array[getRandomPositiveInt(0, array.length - 1)];
 
-export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray }
+/**
+ * Fn returns an array with a length ranging from min to max. If quantity = true, Fn returns an array with a length = quantity.
+ * @param {*} fn
+ * @param {*} min
+ * @param {*} max
+ * @param {*} quantity
+ * @returns
+ */
+const getArrayGivenLength = (fn, min = 1, max = 25, quantity) => {
+  return Array.from({ length: getRandomPositiveInt(min, max, quantity) }, fn);
+};
+
+export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, getArrayGivenLength }
