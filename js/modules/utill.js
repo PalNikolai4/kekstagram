@@ -99,4 +99,18 @@ const getRandomElemArray = (array) => array[getRandomPositiveInt(0, array.length
  */
 const getArrayGivenLength = (fn, min = 1, max = 25, quantity) => Array.from({ length: getRandomPositiveInt(min, max, quantity) }, fn);
 
-export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, getArrayGivenLength };
+/**
+ * Fn takes an HTML tag name and returns an element
+ * @param {string} tagName
+ * @param {string} tagClass
+ * @param {string} content
+ * @returns
+ */
+const createElement = (tagName, tagClass, content) => {
+  const element = document.createElement(tagName);
+  if (tagClass) { element.classList.add(tagClass); }
+  if (content) { element.textContent = content; }
+  return element;
+};
+
+export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, getArrayGivenLength, createElement };

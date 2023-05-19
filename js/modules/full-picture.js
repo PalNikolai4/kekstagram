@@ -1,20 +1,12 @@
+import {createElement} from './utill.js';
+
 const bigPictureContainer = document.querySelector('.big-picture');
 
-
 /**
- * Fn returns tag element.
- * @param {string} tagName
- * @param {string} tagClass
- * @param {string} content
+ * Fn takes the comment data as an object and creates a comment
+ * @param {object} param0
  * @returns
  */
-const createElement = (tagName, tagClass, content) => {
-  const element = document.createElement(tagName);
-  element.classList.add(tagClass);
-  if (content) { element.textContent = content; }
-  return element;
-};
-
 const createComment = ({avatar, name, message}) => {
   const userComment = createElement('li', 'social__comment');
 
