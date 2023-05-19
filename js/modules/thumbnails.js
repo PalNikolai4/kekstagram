@@ -8,7 +8,7 @@ const templatePicture = document.querySelector('#picture').content.querySelector
 const fragment = document.createDocumentFragment();
 
 const drawArrayDescriptionsPhotos = (thumbnails) => {
-  thumbnails.forEach(({ id, url, description, likes, comments }) => {
+  thumbnails.forEach(({ url, description, likes, comments }) => {
     const picture = templatePicture.cloneNode(true);
     picture.querySelector('.picture__img').src = url;
     picture.querySelector('.picture__img').alt = description;

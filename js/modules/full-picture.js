@@ -15,32 +15,18 @@ const createElement = (tagName, tagClass, content) => {
   return element;
 }
 
-// const createComment = (item) => {
-//   const socialComment = createElement('li', 'social__comment');
+const createComment = ({avatar, name, message}) => {
+  const userComment = createElement('li', 'social__comment');
 
-//   const socialPicture = createElement('img', 'social__picture');
-//   socialPicture.src = item.avatar;
-//   socialPicture.alt = item.name;
-//   socialComment.append(socialPicture);
+  const userCommentPicture = createElement('img', 'social__picture');
+  userCommentPicture.src = avatar;
+  userCommentPicture.alt = name;
+  userComment.append(userCommentPicture);
 
-//   const socialText = createElement('p', 'social__text', item.message);
-//   socialComment.append(socialText);
+  const userCommentText = createElement('p', 'social__text', message);
+  userComment.append(userCommentText);
 
-//   return socialComment;
-// }
-
-const createComment = (userComment) => {
-  const socialComment = createElement('li', 'social__comment');
-
-  const socialPicture = createElement('img', 'social__picture');
-  socialPicture.src = userComment.avatar;
-  socialPicture.alt = userComment.name;
-  socialComment.append(socialPicture);
-
-  const socialText = createElement('p', 'social__text', userComment.message);
-  socialComment.append(socialText);
-
-  return socialComment;
+  return userComment;
 }
 
 /**
@@ -60,16 +46,17 @@ const closeFullPhoto = () => {
   })
 }
 
-const showFullPhoto = (thumbnail, usersComments) => {
+const showFullPhoto = ({ url, description, likes, comments }) => {
   bigPictureContainer.classList.remove('hidden');
-  bigPictureContainer.querySelector('.big-picture__img').querySelector('img').src = thumbnail.querySelector('.picture__img').src;
-  bigPictureContainer.querySelector('.likes-count').textContent = thumbnail.querySelector('.picture__likes').textContent;
-  bigPictureContainer.querySelector('.comments-count').textContent = thumbnail.querySelector('.picture__comments').textContent;
-  bigPictureContainer.querySelector('.social__caption').textContent = thumbnail.querySelector('.picture__img').alt;
+  bigPictureContainer.querySelector('.big-picture__img').querySelector('img').src = url;
+  // console.log(thumbnail);
+  bigPictureContainer.querySelector('.likes-count').textContent = likes;
+  bigPictureContainer.querySelector('.comments-count').textContent = comments.length;
+  bigPictureContainer.querySelector('.social__caption').textContent = description;
 
-  usersComments.comments.forEach(comment => {
+  comments.forEach(comment => {
     const userComment = createComment(comment);
-    console.log(userComment)
+    // console.log(userComment)
   });
 
   closeFullPhoto();
