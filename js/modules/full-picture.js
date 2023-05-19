@@ -11,9 +11,9 @@ const bigPictureContainer = document.querySelector('.big-picture');
 const createElement = (tagName, tagClass, content) => {
   const element = document.createElement(tagName);
   element.classList.add(tagClass);
-  if (content) { element.textContent = content };
+  if (content) { element.textContent = content; }
   return element;
-}
+};
 
 const createComment = ({avatar, name, message}) => {
   const userComment = createElement('li', 'social__comment');
@@ -27,7 +27,7 @@ const createComment = ({avatar, name, message}) => {
   userComment.append(userCommentText);
 
   return userComment;
-}
+};
 
 /**
  * Fn closes the view of the full size photo by clicking on cross or esc key
@@ -43,8 +43,8 @@ const closeFullPhoto = () => {
     if (evt.keyCode === 27) {
       bigPictureContainer.classList.add('hidden');
     }
-  })
-}
+  });
+};
 
 const showFullPhoto = ({ url, description, likes, comments }) => {
   bigPictureContainer.classList.remove('hidden');
@@ -54,12 +54,12 @@ const showFullPhoto = ({ url, description, likes, comments }) => {
   bigPictureContainer.querySelector('.comments-count').textContent = comments.length;
   bigPictureContainer.querySelector('.social__caption').textContent = description;
 
-  comments.forEach(comment => {
+  comments.forEach((comment) => {
     const userComment = createComment(comment);
     // console.log(userComment)
   });
 
   closeFullPhoto();
-}
+};
 
-export { showFullPhoto }
+export { showFullPhoto };

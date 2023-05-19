@@ -14,34 +14,34 @@ const checkStringLength = (string = '', maxLength = 100) => string.toString().le
  * @returns {number}
  */
 const getRandomPositiveInt = (min = 0, max = 100, quantity) => {
-	if (quantity && parseInt(quantity, 10) >= 0) return quantity;
+  if (quantity && parseInt(quantity, 10) >= 0) {return quantity;}
 
   if (!parseInt(min, 10)) {
-		min = 0;
-	}
+    min = 0;
+  }
 
-	if (!parseInt(max, 10) && parseInt(max, 10) !== 0) {
-		max = 100;
-	}
+  if (!parseInt(max, 10) && parseInt(max, 10) !== 0) {
+    max = 100;
+  }
 
-	if (!parseInt(max, 10) && parseInt(max, 10) === 0) {
-		max = 0;
-	}
+  if (!parseInt(max, 10) && parseInt(max, 10) === 0) {
+    max = 0;
+  }
 
-	min = Math.abs(min);
-	max = Math.abs(max);
+  min = Math.abs(min);
+  max = Math.abs(max);
 
-	if (min === max) {
-		max += 1;
-	}
+  if (min === max) {
+    max += 1;
+  }
 
-	if (min > max) {
-		const box = min;
-		min = max;
-		max = box;
-	}
+  if (min > max) {
+    const box = min;
+    min = max;
+    max = box;
+  }
 
-	return Math.round(Math.random() * (max - min) + min);
+  return Math.round(Math.random() * (max - min) + min);
 };
 
 /**
@@ -50,11 +50,11 @@ const getRandomPositiveInt = (min = 0, max = 100, quantity) => {
  * @returns
  */
 const getUniqueNum = (min = 0) => {
-	let num = min - 1;
-	return function () {
-		num++;
-		return num;
-	}
+  let num = min - 1;
+  return function () {
+    num++;
+    return num;
+  };
 };
 
 /**
@@ -64,23 +64,23 @@ const getUniqueNum = (min = 0) => {
  * @returns
  */
 const getRandomUniqueNum = (min, max) => {
-	const previousNum = [];
-	return () => {
-		let currentNum = getRandomPositiveInt(min, max);
+  const previousNum = [];
+  return () => {
+    let currentNum = getRandomPositiveInt(min, max);
 
-		if (previousNum.length >= (max - min + 1)) {
-			console.error(`Перебраны все числа в диапазоне от ${min} до ${max}`);
-			return null;
-		}
+    if (previousNum.length >= (max - min + 1)) {
+      console.error(`Перебраны все числа в диапазоне от ${min} до ${max}`);
+      return null;
+    }
 
-		while (previousNum.includes(currentNum)) {
-			currentNum = getRandomPositiveInt(min, max);
-		}
+    while (previousNum.includes(currentNum)) {
+      currentNum = getRandomPositiveInt(min, max);
+    }
 
-		previousNum.push(currentNum);
-		return currentNum;
-	}
-}
+    previousNum.push(currentNum);
+    return currentNum;
+  };
+};
 
 /**
  * Fn returns random element from array
@@ -97,8 +97,6 @@ const getRandomElemArray = (array) => array[getRandomPositiveInt(0, array.length
  * @param {*} quantity
  * @returns
  */
-const getArrayGivenLength = (fn, min = 1, max = 25, quantity) => {
-  return Array.from({ length: getRandomPositiveInt(min, max, quantity) }, fn);
-};
+const getArrayGivenLength = (fn, min = 1, max = 25, quantity) => Array.from({ length: getRandomPositiveInt(min, max, quantity) }, fn);
 
-export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, getArrayGivenLength }
+export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, getArrayGivenLength };

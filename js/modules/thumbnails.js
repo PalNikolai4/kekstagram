@@ -1,9 +1,4 @@
-// import { getDescriptionPhoto } from "./data.js";
-// import { getArrayGivenLength } from "./utill.js"
-import { showFullPhoto } from "./full-picture.js";
-
 const picturesContainer = document.querySelector('.pictures');
-const bigPictureContainer = document.querySelector('.big-picture');
 const templatePicture = document.querySelector('#picture').content.querySelector('.picture');
 const fragment = document.createDocumentFragment();
 
@@ -17,7 +12,7 @@ const drawArrayDescriptionsPhotos = (thumbnails) => {
     fragment.append(picture);
   });
   picturesContainer.append(fragment);
-}
+};
 
 
-export { drawArrayDescriptionsPhotos }
+export { drawArrayDescriptionsPhotos };
