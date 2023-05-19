@@ -1,5 +1,6 @@
 const bigPictureContainer = document.querySelector('.big-picture');
 
+
 /**
  * Fn returns tag element.
  * @param {string} tagName
@@ -14,15 +15,29 @@ const createElement = (tagName, tagClass, content) => {
   return element;
 }
 
-const createComment = (item) => {
+// const createComment = (item) => {
+//   const socialComment = createElement('li', 'social__comment');
+
+//   const socialPicture = createElement('img', 'social__picture');
+//   socialPicture.src = item.avatar;
+//   socialPicture.alt = item.name;
+//   socialComment.append(socialPicture);
+
+//   const socialText = createElement('p', 'social__text', item.message);
+//   socialComment.append(socialText);
+
+//   return socialComment;
+// }
+
+const createComment = (userComment) => {
   const socialComment = createElement('li', 'social__comment');
 
   const socialPicture = createElement('img', 'social__picture');
-  socialPicture.src = item.avatar;
-  socialPicture.alt = item.name;
+  socialPicture.src = userComment.avatar;
+  socialPicture.alt = userComment.name;
   socialComment.append(socialPicture);
 
-  const socialText = createElement('p', 'social__text', item.message);
+  const socialText = createElement('p', 'social__text', userComment.message);
   socialComment.append(socialText);
 
   return socialComment;
@@ -45,21 +60,17 @@ const closeFullPhoto = () => {
   })
 }
 
-const showFullPhoto = (url, likes, commentsLength, description, comments) => {
-  const socialCommentsList = bigPictureContainer.querySelector('.social__comments');
-  const fragment = document.createDocumentFragment();
-
+const showFullPhoto = (thumbnail, usersComments) => {
   bigPictureContainer.classList.remove('hidden');
-  bigPictureContainer.querySelector('.big-picture__img').querySelector('img').src = url;
-  bigPictureContainer.querySelector('.likes-count').textContent = likes;
-  bigPictureContainer.querySelector('.comments-count').textContent = commentsLength;
-  bigPictureContainer.querySelector('.social__caption').textContent = description;
+  bigPictureContainer.querySelector('.big-picture__img').querySelector('img').src = thumbnail.querySelector('.picture__img').src;
+  bigPictureContainer.querySelector('.likes-count').textContent = thumbnail.querySelector('.picture__likes').textContent;
+  bigPictureContainer.querySelector('.comments-count').textContent = thumbnail.querySelector('.picture__comments').textContent;
+  bigPictureContainer.querySelector('.social__caption').textContent = thumbnail.querySelector('.picture__img').alt;
 
-  // какая-то хрень с комментариями!! Вместо 1-3 комментариев на каждое фото отрисовываются все
-  comments.forEach(comment => {
-    fragment.append(createComment(comment));
+  usersComments.comments.forEach(comment => {
+    const userComment = createComment(comment);
+    console.log(userComment)
   });
-  socialCommentsList.append(fragment);
 
   closeFullPhoto();
 }

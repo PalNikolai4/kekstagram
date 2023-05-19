@@ -1,1 +1,1 @@
-import './modules/thumbnails.js';
+import './modules/gallery.js';
