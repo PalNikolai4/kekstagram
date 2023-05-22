@@ -7,7 +7,7 @@ const bigPictureContainer = document.querySelector('.big-picture');
 const toggleModalOpen = () => {
   const isHidden = bigPictureContainer.classList.contains('hidden');
   isHidden ? document.body.classList.remove('modal-open') : document.body.classList.add('modal-open');
-}
+};
 
 /**
  * Fn takes the comment data as an object and creates a comment
@@ -44,7 +44,7 @@ const closeFullPhoto = () => {
       bigPictureContainer.classList.add('hidden');
       toggleModalOpen();
     }
-  })
+  });
 };
 
 const showFullPhoto = ({ url, description, likes, comments }) => {

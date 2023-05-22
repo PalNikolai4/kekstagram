@@ -113,4 +113,12 @@ const createElement = (tagName, tagClass, content) => {
   return element;
 };
 
-export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, getArrayGivenLength, createElement };
+const isEntKey = (evt) => {
+  return evt.key === 'Enter';
+}
+
+const isEscKey = (evt) => {
+  return evt.key === 'Escape';
+}
+
+export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, getArrayGivenLength, createElement, isEntKey, isEscKey };
