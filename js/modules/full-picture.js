@@ -44,7 +44,7 @@ const closeFullPhoto = () => {
       bigPictureContainer.classList.add('hidden');
       toggleModalOpen();
     }
-  });
+  })
 };
 
 const showFullPhoto = ({ url, description, likes, comments }) => {
