@@ -114,11 +114,13 @@ const createElement = (tagName, tagClass, content) => {
 };
 
 const isEntKey = (evt) => {
+  evt.preventDefault();
   return evt.key === 'Enter';
-}
+};
 
 const isEscKey = (evt) => {
-  return evt.key === 'Escape';
-}
+  evt.preventDefault();
+  return (evt.key === 'Escape');
+};
 
 export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, getArrayGivenLength, createElement, isEntKey, isEscKey };

@@ -1,13 +1,7 @@
 import { createElement } from './utill.js';
-const bigPictureContainer = document.querySelector('.big-picture');
+import { openFullPhoto } from './eventListener.js';
 
-/**
- * Fn toggle body class 'modal-open'
- */
-const toggleModalOpen = () => {
-  const isHidden = bigPictureContainer.classList.contains('hidden');
-  isHidden ? document.body.classList.remove('modal-open') : document.body.classList.add('modal-open');
-};
+const bigPictureContainer = document.querySelector('.big-picture');
 
 /**
  * Fn takes the comment data as an object and creates a comment
@@ -28,27 +22,7 @@ const createComment = ({ avatar, name, message }) => {
   return userComment;
 };
 
-/**
- * Fn closes the view of the full size photo by clicking on cross or esc key
- */
-const closeFullPhoto = () => {
-  const closeButton = bigPictureContainer.querySelector('.big-picture__cancel');
-  closeButton.addEventListener('click', () => {
-    bigPictureContainer.classList.add('hidden');
-    toggleModalOpen();
-  });
-
-  document.addEventListener('keydown', (evt) => {
-    evt.preventDefault();
-    if (evt.keyCode === 27) {
-      bigPictureContainer.classList.add('hidden');
-      toggleModalOpen();
-    }
-  });
-};
-
 const showFullPhoto = ({ url, description, likes, comments }) => {
-  bigPictureContainer.classList.remove('hidden');
   bigPictureContainer.querySelector('.big-picture__img').querySelector('img').src = url;
   bigPictureContainer.querySelector('.likes-count').textContent = likes;
   bigPictureContainer.querySelector('.comments-count').textContent = comments.length;
@@ -62,8 +36,9 @@ const showFullPhoto = ({ url, description, likes, comments }) => {
     commentsFragment.append(userComment);
   });
   socialCommentsList.append(commentsFragment);
-  closeFullPhoto();
-  toggleModalOpen();
+  const closeFullPhotoButton = bigPictureContainer.querySelector('.big-picture__cancel');
+
+  openFullPhoto();
 };
 
 export { showFullPhoto };
