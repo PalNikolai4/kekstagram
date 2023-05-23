@@ -2,7 +2,7 @@ const picturesContainer = document.querySelector('.pictures');
 const templatePicture = document.querySelector('#picture').content.querySelector('.picture');
 const fragment = document.createDocumentFragment();
 
-const drawArrayThumbnails = (thumbnails) => {
+const getArrayThumbnails = (thumbnails) => {
   thumbnails.forEach(({ url, description, likes, comments }) => {
     const picture = templatePicture.cloneNode(true);
     picture.querySelector('.picture__img').src = url;
@@ -15,4 +15,4 @@ const drawArrayThumbnails = (thumbnails) => {
 };
 
 
-export { drawArrayThumbnails };
+export { getArrayThumbnails };

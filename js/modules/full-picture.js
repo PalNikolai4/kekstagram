@@ -1,7 +1,8 @@
 import { createElement } from './utill.js';
-import { openFullPhoto } from './eventListener.js';
+import { openFullPhoto } from './eventListener-gallery.js';
 
 const bigPictureContainer = document.querySelector('.big-picture');
+const socialCommentsList = bigPictureContainer.querySelector('.social__comments');
 
 /**
  * Fn takes the comment data as an object and creates a comment
@@ -22,23 +23,27 @@ const createComment = ({ avatar, name, message }) => {
   return userComment;
 };
 
-const showFullPhoto = ({ url, description, likes, comments }) => {
-  bigPictureContainer.querySelector('.big-picture__img').querySelector('img').src = url;
-  bigPictureContainer.querySelector('.likes-count').textContent = likes;
-  bigPictureContainer.querySelector('.comments-count').textContent = comments.length;
-  bigPictureContainer.querySelector('.social__caption').textContent = description;
-
-  const commentsFragment = document.createDocumentFragment();
-  const socialCommentsList = bigPictureContainer.querySelector('.social__comments');
+const deleteAllComments = () => {
   socialCommentsList.innerHTML = '';
+}
+
+const createComments = (comments) => {
+  const commentsFragment = document.createDocumentFragment();
+  socialCommentsList.append(commentsFragment);
   comments.forEach((comment) => {
     const userComment = createComment(comment);
     commentsFragment.append(userComment);
   });
   socialCommentsList.append(commentsFragment);
-  const closeFullPhotoButton = bigPictureContainer.querySelector('.big-picture__cancel');
+}
 
+const showFullPhoto = ({ url, description, likes, comments }) => {
+  bigPictureContainer.querySelector('.big-picture__img').querySelector('img').src = url;
+  bigPictureContainer.querySelector('.likes-count').textContent = likes;
+  bigPictureContainer.querySelector('.comments-count').textContent = comments.length;
+  bigPictureContainer.querySelector('.social__caption').textContent = description;
   openFullPhoto();
+  createComments(comments);
 };
 
-export { showFullPhoto };
+export { showFullPhoto, deleteAllComments };
