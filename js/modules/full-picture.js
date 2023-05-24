@@ -1,5 +1,5 @@
 import { createElement } from './utill.js';
-import { openFullPhoto } from './eventListener-gallery.js';
+import { openFullPhoto } from './events-gallery.js';
 
 const bigPictureContainer = document.querySelector('.big-picture');
 const socialCommentsList = bigPictureContainer.querySelector('.social__comments');
@@ -29,7 +29,6 @@ const deleteAllComments = () => {
 
 const createComments = (comments) => {
   const commentsFragment = document.createDocumentFragment();
-  socialCommentsList.append(commentsFragment);
   comments.forEach((comment) => {
     const userComment = createComment(comment);
     commentsFragment.append(userComment);
