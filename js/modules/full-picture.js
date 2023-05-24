@@ -25,7 +25,7 @@ const createComment = ({ avatar, name, message }) => {
 
 const deleteAllComments = () => {
   socialCommentsList.innerHTML = '';
-}
+};
 
 const createComments = (comments) => {
   const commentsFragment = document.createDocumentFragment();
@@ -34,7 +34,7 @@ const createComments = (comments) => {
     commentsFragment.append(userComment);
   });
   socialCommentsList.append(commentsFragment);
-}
+};
 
 const showFullPhoto = ({ url, description, likes, comments }) => {
   bigPictureContainer.querySelector('.big-picture__img').querySelector('img').src = url;

@@ -7,12 +7,12 @@ const cancelEditImgButton = document.querySelector('.img-upload__cancel');
 const showFormEditContainer = () => {
   uploadImgForm.querySelector('.img-upload__overlay').classList.remove('hidden');
   document.body.classList.add('modal-open');
-}
+};
 
 const hideFormEditContainer = () => {
   uploadImgForm.querySelector('.img-upload__overlay').classList.add('hidden');
   document.body.classList.remove('modal-open');
-}
+};
 
 const closeFormEditImg = () => {
   hideFormEditContainer();
@@ -20,9 +20,9 @@ const closeFormEditImg = () => {
   document.removeEventListener('keydown', onCloseFormEditImgEsc);
 
   removeAllEventScale();
-}
+};
 
-const onCloseFormEditImgEsc = (evt) => {
+function onCloseFormEditImgEsc (evt) {
   evt.preventDefault();
   if (isEscKey(evt)) {
     closeFormEditImg();
@@ -36,8 +36,7 @@ const openFormEditImg = () => {
   document.addEventListener('keydown', onCloseFormEditImgEsc);
 
   editScalePhoto();
-}
+};
 
 
-
-export { openFormEditImg }
+export { openFormEditImg };

@@ -14,5 +14,5 @@ const addClickHandlerthumbnailsOnPage = () => {
       showFullPhoto(arrayDescriptionsPhotos[i]);
     });
   }
-}
+};
 addClickHandlerthumbnailsOnPage();
