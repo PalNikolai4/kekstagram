@@ -1,17 +1,26 @@
 import { isEscKey } from './utill.js';
+import { editScalePhoto, removeAllEventScale } from './photo editing fn/scale.js';
 
-const imgUploadSection = document.querySelector('.img-upload');
 const uploadImgForm = document.querySelector('#upload-select-image');
-const cancelEditImgButton = imgUploadSection.querySelector('.img-upload__cancel');
+const cancelEditImgButton = document.querySelector('.img-upload__cancel');
 
-const closeFormEditImg = () => {
-  uploadImgForm.querySelector('.img-upload__overlay').classList.add('hidden');
-  document.body.classList.remove('modal-open');
-
-  cancelEditImgButton.removeEventListener('click', closeFormEditImg);
-  document.removeEventListener('keydown', onCloseFormEditImgEsc);
+const showFormEditContainer = () => {
+  uploadImgForm.querySelector('.img-upload__overlay').classList.remove('hidden');
+  document.body.classList.add('modal-open');
 }
 
+const hideFormEditContainer = () => {
+  uploadImgForm.querySelector('.img-upload__overlay').classList.add('hidden');
+  document.body.classList.remove('modal-open');
+}
+
+const closeFormEditImg = () => {
+  hideFormEditContainer();
+  cancelEditImgButton.removeEventListener('click', closeFormEditImg);
+  document.removeEventListener('keydown', onCloseFormEditImgEsc);
+
+  removeAllEventScale();
+}
 
 const onCloseFormEditImgEsc = (evt) => {
   evt.preventDefault();
@@ -22,11 +31,11 @@ const onCloseFormEditImgEsc = (evt) => {
 
 
 const openFormEditImg = () => {
-  uploadImgForm.querySelector('.img-upload__overlay').classList.remove('hidden');
-  document.body.classList.add('modal-open');
-
+  showFormEditContainer();
   cancelEditImgButton.addEventListener('click', closeFormEditImg);
   document.addEventListener('keydown', onCloseFormEditImgEsc);
+
+  editScalePhoto();
 }
 
 

@@ -8,6 +8,7 @@ const showFullPhotoContainer = () => {
   bigPictureContainer.classList.remove('hidden');
   document.body.classList.add('modal-open');
 }
+
 const hideFullPhotoContainer = () => {
   bigPictureContainer.classList.add('hidden');
   document.body.classList.remove('modal-open');

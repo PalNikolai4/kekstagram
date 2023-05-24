@@ -1,13 +1,12 @@
 import { openFormEditImg } from './events-form.js'
 
-const uploadImgForm = document.querySelector('#upload-select-image');
-const uploadFileField = uploadImgForm.querySelector('#upload-file');
-
-
+const uploadFileField = document.querySelector('#upload-file');
 
 uploadFileField.addEventListener('change', (evt) => {
   openFormEditImg();
 
-  const uploadPreviewImg = uploadImgForm.querySelector('.img-upload__preview').querySelector('img');
-  uploadPreviewImg.src = URL.createObjectURL(uploadFileField.files[0]);
+  const uploadPreviewImg = document.querySelector('.img-upload__preview').querySelector('img');
+  if (uploadFileField.files.length > 0) {
+    uploadPreviewImg.src = URL.createObjectURL(uploadFileField.files[0]);
+  }
 })
