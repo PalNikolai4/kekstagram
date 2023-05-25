@@ -4,6 +4,10 @@ import { openFullPhoto } from './events-gallery.js';
 const bigPictureContainer = document.querySelector('.big-picture');
 const socialCommentsList = bigPictureContainer.querySelector('.social__comments');
 
+const deleteAllComments = () => {
+  socialCommentsList.innerHTML = '';
+};
+
 /**
  * Fn takes the comment data as an object and creates a comment
  * @param {object} param0
@@ -23,10 +27,6 @@ const createComment = ({ avatar, name, message }) => {
   return userComment;
 };
 
-const deleteAllComments = () => {
-  socialCommentsList.innerHTML = '';
-};
-
 const createComments = (comments) => {
   const commentsFragment = document.createDocumentFragment();
   comments.forEach((comment) => {
@@ -36,7 +36,7 @@ const createComments = (comments) => {
   socialCommentsList.append(commentsFragment);
 };
 
-const showFullPhoto = ({ url, description, likes, comments }) => {
+const drawFullPhoto = ({ url, description, likes, comments }) => {
   bigPictureContainer.querySelector('.big-picture__img').querySelector('img').src = url;
   bigPictureContainer.querySelector('.likes-count').textContent = likes;
   bigPictureContainer.querySelector('.comments-count').textContent = comments.length;
@@ -45,4 +45,4 @@ const showFullPhoto = ({ url, description, likes, comments }) => {
   createComments(comments);
 };
 
-export { showFullPhoto, deleteAllComments };
+export { drawFullPhoto, deleteAllComments };
