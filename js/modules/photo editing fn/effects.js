@@ -2,11 +2,11 @@ const uploadPreviewImg = document.querySelector('.img-upload__preview').querySel
 const effectsList = document.querySelector('.effects__list');
 
 const onEffectsListClick = (evt) => {
-  if (evt.target.nodeName === 'li > input > label > span') {
-    alert('1');
-  }
+  const selectedEffect = effectsList.querySelector('input[type="radio"]:checked');
+  console.log(selectedEffect);
+
 };
 
-// uploadPreviewImg.addEventListener('click', onEffectsListClick);
+effectsList.addEventListener('change', onEffectsListClick);
 
 export { onEffectsListClick };

@@ -1,4 +1,4 @@
-import { isEscKey, isEntKey } from './utill.js';
+import { isEscKey } from './utill.js';
 import { deleteAllComments } from './full-picture.js';
 
 const bigPictureContainer = document.querySelector('.big-picture');
@@ -21,33 +21,20 @@ const onCloseFullPhotoEscKeydown = (evt) => {
   }
 };
 
-const onCloseFullPhotoEntKeydown = (evt) => {
-  if (isEntKey(evt)) {
-    evt.preventDefault();
-    closeFullPhoto();
-  }
-};
-
-const onCloseFullPhotoClick = () => {
+closeFullPhotoButton.addEventListener('click', () => {
   closeFullPhoto();
-};
+})
 
 const openFullPhoto = () => {
   showFullPhotoContainer();
   deleteAllComments();
   document.addEventListener('keydown', onCloseFullPhotoEscKeydown);
-  closeFullPhotoButton.addEventListener('keydown', onCloseFullPhotoEntKeydown);
-  closeFullPhotoButton.addEventListener('click', onCloseFullPhotoClick);
 };
-
 
 function closeFullPhoto() {
   hideFullPhotoContainer();
   deleteAllComments();
-
   document.removeEventListener('keydown', onCloseFullPhotoEscKeydown);
-  closeFullPhotoButton.addEventListener('keydown', onCloseFullPhotoEntKeydown);
-  closeFullPhotoButton.removeEventListener('click', onCloseFullPhotoClick);
 }
 
 export { openFullPhoto };
