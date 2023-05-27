@@ -23,7 +23,7 @@ const onCloseFullPhotoEscKeydown = (evt) => {
 
 closeFullPhotoButton.addEventListener('click', () => {
   closeFullPhoto();
-})
+});
 
 const openFullPhoto = () => {
   showFullPhotoContainer();
