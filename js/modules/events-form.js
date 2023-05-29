@@ -34,7 +34,7 @@ const openFormEditImg = () => {
   addEffectUploadPreviewImg();
 };
 
-const resetUploadFileInput = () => { document.querySelector('#upload-file').value = '' };
+const resetUploadFileInput = () => { document.querySelector('#upload-file').value = ''; };
 
 function closeFormEditImg() {
   hideFormEditContainer();

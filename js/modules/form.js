@@ -9,6 +9,6 @@ const onUploadFileFieldChange = () => {
   if (uploadFileField.files.length > 0) {
     uploadPreviewImg.src = URL.createObjectURL(uploadFileField.files[0]);
   }
-}
+};
 
 uploadFileField.addEventListener('change', onUploadFileFieldChange);
