@@ -32,7 +32,7 @@ const getDescriptionPhoto = () => ({
   url: `photos/${descriptionPhotoURL()}.jpg`,
   description: getRandomElemArray(DESCRIPTIONS),
   likes: getRandomPositiveInt(15, 200),
-  comments: getArrayGivenLength(getPhotoСomment, 1, 3)
+  comments: getArrayGivenLength(getPhotoСomment, 1, 25)
 });
 
 export { getDescriptionPhoto };

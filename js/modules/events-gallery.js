@@ -27,7 +27,6 @@ closeFullPhotoButton.addEventListener('click', () => {
 
 const openFullPhoto = () => {
   showFullPhotoContainer();
-  deleteAllComments();
   document.addEventListener('keydown', onCloseFullPhotoEscKeydown);
 };
 
@@ -36,5 +35,6 @@ function closeFullPhoto() {
   deleteAllComments();
   document.removeEventListener('keydown', onCloseFullPhotoEscKeydown);
 }
+
 
 export { openFullPhoto };

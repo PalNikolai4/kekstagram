@@ -3,7 +3,7 @@ import { getArrayGivenLength } from './utill.js';
 import { getArrayThumbnails } from './thumbnails.js';
 import { drawFullPhoto } from './full-picture.js';
 
-const arrayDescriptionsPhotos = getArrayGivenLength(getDescriptionPhoto, 1, 25, 5);
+const arrayDescriptionsPhotos = getArrayGivenLength(getDescriptionPhoto, 6, 25);
 
 const addClickHandlerthumbnailsOnPage = () => {
   getArrayThumbnails(arrayDescriptionsPhotos);

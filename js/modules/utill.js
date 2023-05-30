@@ -117,4 +117,16 @@ const isEntKey = (evt) => evt.key === 'Enter';
 
 const isEscKey = (evt) => evt.key === 'Escape';
 
-export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, getArrayGivenLength, createElement, isEntKey, isEscKey };
+/**
+ * Fn takes an array.length > 0, return array.length === 0
+ * @param {array} arr
+ */
+const clearArr = (arr) => {
+  let i = 0;
+  while (arr.length > 0) {
+    const elem = arr.shift();
+    i++;
+  }
+};
+
+export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, getArrayGivenLength, createElement, isEntKey, isEscKey, clearArr };
