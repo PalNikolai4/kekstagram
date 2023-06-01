@@ -29,6 +29,10 @@ const createComment = ({ avatar, name, message }) => {
   return userComment;
 };
 
+/**
+ * Fn takes an array of objects. Creates comments. Inserts them into a sheet
+ * @param {array} comments
+ */
 const createComments = (comments) => {
   const commentsFragment = document.createDocumentFragment();
   comments.forEach((comment) => {
@@ -84,7 +88,6 @@ const hideOrShowCommentsLoaderButton = () => {
   } else {
     commentsLoaderButton.classList.remove('hidden');
   }
-
 };
 
 /**
@@ -116,6 +119,10 @@ const drawComments = (items) => {
   }
 };
 
+/**
+ * Fn accepts an object with information. Inserts information in the right places
+ * @param {object} param0
+ */
 const drawFullPhoto = ({ url, description, likes, comments }) => {
   bigPictureContainer.querySelector('.big-picture__img').querySelector('img').src = url;
   bigPictureContainer.querySelector('.likes-count').textContent = likes;

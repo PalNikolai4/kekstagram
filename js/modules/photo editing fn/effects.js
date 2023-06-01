@@ -1,7 +1,12 @@
 import { getValueSelectedEffects } from './slider.js'
+
 const uploadPreviewImg = document.querySelector('.img-upload__preview').querySelector('img');
 const effectsList = document.querySelector('.effects__list');
 
+/**
+ * Fn applies the selected effect to the photo
+ * @param {evt} evt
+ */
 const onEffectsListChange = (evt) => {
   if (evt.target.matches('input[type="radio"]')) {
     const currentsClassesImg = uploadPreviewImg.classList;
@@ -10,21 +15,22 @@ const onEffectsListChange = (evt) => {
       if (isContains) {
         uploadPreviewImg.classList.remove(currentClassImg);
       }
-
     });
     uploadPreviewImg.classList.add(`effects__preview--${evt.target.value}`);
     getValueSelectedEffects(evt.target.value);
-    // Вызываю ФН-1, передаю ей evt.target.value (none, chrome, sepia, marvin, phobos, heat)
-    // ФН-1 внутри вызывает другую ФН-2 и передаёт ей evt.target.value
-    // ФН-2 обрабатывает результат
-
   }
 };
 
+/**
+ * Fn adds an event listener on change
+ */
 const addEffectUploadPreviewImg = () => {
   effectsList.addEventListener('change', onEffectsListChange);
 };
 
+/**
+ * Fn removes the event listener on change
+ */
 const removeEffectUploadPreviewImg = () => {
   effectsList.removeEventListener('change', onEffectsListChange);
 };

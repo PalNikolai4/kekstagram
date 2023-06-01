@@ -10,10 +10,28 @@ noUiSlider.create(slider, {
 	},
 	start: 50,
 	step: 10,
-	connect: 'lower'
-	// доделать форматирование чисел
+	connect: 'lower',
+  format: {
+    to: function (value) {
+      if (Number.isInteger(value)) {
+        return value;
+      } else {
+        return value.toFixed(1);
+      }
+    },
+    from: function (value) {
+      return parseFloat(value);
+    }
+  }
 })
 
+sliderFieldset.classList.add('hidden');
+
+/**
+ * Fn takes the value of the selected effect, the unit of measurement (optional). The value of the slider changes depending on the selected effect. The value of the slider is passed to the "filter" attribute of the photo
+ * @param {string} filterName
+ * @param {string} unitsMeasurements
+ */
 const useEffectSlider = (filterName, unitsMeasurements) => {
 	slider.noUiSlider.on('update', () => {
 		if (filterName === 'none') {
@@ -24,18 +42,15 @@ const useEffectSlider = (filterName, unitsMeasurements) => {
 		}
 
 		if (unitsMeasurements) {
-			sliderField.value = slider.noUiSlider.get();
-			uploadPreviewImg.style.filter = `${filterName}(${parseFloat(sliderField.value)}${unitsMeasurements})`;
+			uploadPreviewImg.style.filter = `${filterName}(${slider.noUiSlider.get()}${unitsMeasurements})`;
 		} else {
-			sliderField.value = slider.noUiSlider.get();
-			uploadPreviewImg.style.filter = `${filterName}(${parseFloat(sliderField.value)})`;
+			uploadPreviewImg.style.filter = `${filterName}(${slider.noUiSlider.get()})`;
 		}
-
+    sliderField.value = slider.noUiSlider.get();
 	})
 }
 
 const useSelectedEffects = (value) => {
-
 	if (value === 'none') {
 		slider.noUiSlider.updateOptions({
 			range: {
@@ -44,12 +59,11 @@ const useSelectedEffects = (value) => {
 			},
 			start: 100,
 			step: 10,
-		})
-		const filterName = 'none';
-		useEffectSlider(filterName);
+		});
+		useEffectSlider('none');
 	}
 
-	if (value === 'chrome') {
+  if (value === 'chrome') {
 		slider.noUiSlider.updateOptions({
 			range: {
 				min: 0,
@@ -58,11 +72,10 @@ const useSelectedEffects = (value) => {
 			step: 0.1,
 			start: 1
 		});
-		const filterName = 'grayscale';
-		useEffectSlider(filterName);
+		useEffectSlider('grayscale');
 	}
 
-	if (value === 'sepia') {
+  if (value === 'sepia') {
 		slider.noUiSlider.updateOptions({
 			range: {
 				min: 0,
@@ -70,12 +83,11 @@ const useSelectedEffects = (value) => {
 			},
 			step: 0.1,
 			start: 1
-		})
-		const filterName = 'sepia';
-		useEffectSlider(filterName);
+		});
+		useEffectSlider('sepia');
 	}
 
-	if (value === 'marvin') {
+  if (value === 'marvin') {
 		slider.noUiSlider.updateOptions({
 			range: {
 				min: 0,
@@ -83,12 +95,11 @@ const useSelectedEffects = (value) => {
 			},
 			step: 1,
 			start: 100
-		})
-		const filterName = 'invert';
-		useEffectSlider(filterName, '%');
+		});
+		useEffectSlider('invert', '%');
 	}
 
-	if (value === 'phobos') {
+  if (value === 'phobos') {
 		slider.noUiSlider.updateOptions({
 			range: {
 				min: 0,
@@ -96,12 +107,11 @@ const useSelectedEffects = (value) => {
 			},
 			step: 0.1,
 			start: 3
-		})
-		const filterName = 'blur';
-		useEffectSlider(filterName, 'px');
+		});
+		useEffectSlider('blur', 'px');
 	}
 
-	if (value === 'heat') {
+  if (value === 'heat') {
 		slider.noUiSlider.updateOptions({
 			range: {
 				min: 1,
@@ -109,9 +119,8 @@ const useSelectedEffects = (value) => {
 			},
 			step: 0.1,
 			start: 3
-		})
-		const filterName = 'brightness';
-		useEffectSlider(filterName);
+		});
+		useEffectSlider('brightness');
 	}
 }
 
