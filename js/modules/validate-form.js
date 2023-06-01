@@ -9,11 +9,12 @@ const pristine = new Pristine(uploadImgForm, {
   successClass: 'img-upload__text--valid'
 }, true);
 
+
+
 const validateTextHashtags = (items) => {
-  // let hashtagsMessage = '';
 
   if (items.length > 20) {
-    // hashtagsMessage = 'Максимум 20 символов';
+    // errorMessage = 'Максимум 20 символов';
     return false;
   }
 
@@ -24,21 +25,21 @@ const validateTextHashtags = (items) => {
 
     const arrHashTags = items.split(' ');
     if (arrHashTags.length > 5) {
-      // hashtagsMessage = 'Максимум 5 хэштегов';
+      // errorMessage = 'Максимум 5 хэштегов';
       return false;
     }
 
     for (let i = 0; i < arrHashTags.length; i++) {
       for (let j = i + 1; j < arrHashTags.length; j++) {
         if (arrHashTags[i].toLowerCase() === arrHashTags[j].toLowerCase()) {
-          // hashtagsMessage = 'Хэштеги должны быть разными';
+          // errorMessage = 'Хэштеги должны быть разными';
           return false;
         }
       }
 
       const isContains = re.test(arrHashTags[i]);
       if (!isContains) {
-        // hashtagsMessage = 'Хэштеги содержат недопустимые символы и не могут состоять только из одной #';
+        // errorMessage = 'Хэштеги содержат недопустимые символы и не могут состоять только из одной #';
         return false;
       }
     }

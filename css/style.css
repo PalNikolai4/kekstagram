@@ -133,7 +133,7 @@ main {
 }
 
 .img-filters--inactive {
-  opacity: 0;
+  opacity: 0.5;
 }
 
 .img-filters__button {
@@ -152,7 +152,7 @@ main {
 
 .img-filters__button:active,
 .img-filters__button--active {
-  color: #ff4e4e;
+  color: #000;
 
   background-color: #ffffff;
   border-radius: 2px;

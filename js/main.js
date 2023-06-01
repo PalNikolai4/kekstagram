@@ -21,4 +21,7 @@ import './modules/form.js';
   - Модуль full-picture.js -> сделать рефактор Fn drawComments. В особенности вынести FN из тела addEventListener.
   - Модуль validate-form.js -> доработать вывод сообщения об ошибке из Fn validateTextHashtags (в зависимости
     от проверки) в pristine.addValidator вместо сообщения 'Что-то пошло не так'.
+  - Модуль scale.js -> Fn removeAllEventScale -> export to events-form.js in Fn closeFormEditImg - обработчики при закрытии
+    окна редактирования фотографии висят. Должны быть удалены!
+
 */

@@ -23,11 +23,12 @@ const onIncreaseScaleValue = () => {
 
 const editScalePhoto = () => {
   scaleField.value = '100%';
+  changeValue(parseInt(scaleField.value) / 100);
+
   scaleSmallerButton.addEventListener('click', onDecreaseScaleValue);
   scaleBiggerButton.addEventListener('click', onIncreaseScaleValue);
 };
 
-// События не удаляются. Почему? Разобраться!
 const removeAllEventScale = () => {
   scaleSmallerButton.removeEventListener('click', onDecreaseScaleValue);
   scaleBiggerButton.removeEventListener('click', onIncreaseScaleValue);
