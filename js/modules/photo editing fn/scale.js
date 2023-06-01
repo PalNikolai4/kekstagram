@@ -12,7 +12,7 @@ const changeValue = (item) => {
 };
 
 /**
- * Fn decreases zoom values ​​on button click by 25 to 0
+ * Fn decreases zoom values on button click by 25 to 0
  */
 const onDecreaseScaleValue = () => {
   if (parseInt(scaleField.value, 10) > 0) {
@@ -22,7 +22,7 @@ const onDecreaseScaleValue = () => {
 };
 
 /**
- * Fn increases zoom values ​​on button click by 25 to 100
+ * Fn increases zoom values on button click by 25 to 100
  */
 const onIncreaseScaleValue = () => {
   if (parseInt(scaleField.value, 10) < 100) {
@@ -36,7 +36,7 @@ const onIncreaseScaleValue = () => {
  */
 const editScalePhoto = () => {
   scaleField.value = '100%';
-  changeValue(parseInt(scaleField.value) / 100);
+  changeValue(parseInt(scaleField.value, 10) / 100);
 
   scaleSmallerButton.addEventListener('click', onDecreaseScaleValue);
   scaleBiggerButton.addEventListener('click', onIncreaseScaleValue);

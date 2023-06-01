@@ -1,4 +1,4 @@
-import { getValueSelectedEffects } from './slider.js'
+import { getValueSelectedEffects } from './slider.js';
 
 const uploadPreviewImg = document.querySelector('.img-upload__preview').querySelector('img');
 const effectsList = document.querySelector('.effects__list');

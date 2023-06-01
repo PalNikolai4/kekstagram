@@ -4,13 +4,13 @@ const slider = document.querySelector('.effect-level__slider');
 const uploadPreviewImg = document.querySelector('.img-upload__preview').querySelector('img');
 
 noUiSlider.create(slider, {
-	range: {
-		min: 0,
-		max: 100
-	},
-	start: 50,
-	step: 10,
-	connect: 'lower',
+  range: {
+    min: 0,
+    max: 100
+  },
+  start: 50,
+  step: 10,
+  connect: 'lower',
   format: {
     to: function (value) {
       if (Number.isInteger(value)) {
@@ -23,7 +23,7 @@ noUiSlider.create(slider, {
       return parseFloat(value);
     }
   }
-})
+});
 
 sliderFieldset.classList.add('hidden');
 
@@ -33,96 +33,96 @@ sliderFieldset.classList.add('hidden');
  * @param {string} unitsMeasurements
  */
 const useEffectSlider = (filterName, unitsMeasurements) => {
-	slider.noUiSlider.on('update', () => {
-		if (filterName === 'none') {
-			uploadPreviewImg.style.removeProperty('filter');
-			sliderFieldset.classList.add('hidden');
-		} else {
-			sliderFieldset.classList.remove('hidden');
-		}
+  slider.noUiSlider.on('update', () => {
+    if (filterName === 'none') {
+      uploadPreviewImg.style.removeProperty('filter');
+      sliderFieldset.classList.add('hidden');
+    } else {
+      sliderFieldset.classList.remove('hidden');
+    }
 
-		if (unitsMeasurements) {
-			uploadPreviewImg.style.filter = `${filterName}(${slider.noUiSlider.get()}${unitsMeasurements})`;
-		} else {
-			uploadPreviewImg.style.filter = `${filterName}(${slider.noUiSlider.get()})`;
-		}
+    if (unitsMeasurements) {
+      uploadPreviewImg.style.filter = `${filterName}(${slider.noUiSlider.get()}${unitsMeasurements})`;
+    } else {
+      uploadPreviewImg.style.filter = `${filterName}(${slider.noUiSlider.get()})`;
+    }
     sliderField.value = slider.noUiSlider.get();
-	})
-}
+  });
+};
 
 const useSelectedEffects = (value) => {
-	if (value === 'none') {
-		slider.noUiSlider.updateOptions({
-			range: {
-				min: 0,
-				max: 100
-			},
-			start: 100,
-			step: 10,
-		});
-		useEffectSlider('none');
-	}
+  if (value === 'none') {
+    slider.noUiSlider.updateOptions({
+      range: {
+        min: 0,
+        max: 100
+      },
+      start: 100,
+      step: 10,
+    });
+    useEffectSlider('none');
+  }
 
   if (value === 'chrome') {
-		slider.noUiSlider.updateOptions({
-			range: {
-				min: 0,
-				max: 1
-			},
-			step: 0.1,
-			start: 1
-		});
-		useEffectSlider('grayscale');
-	}
+    slider.noUiSlider.updateOptions({
+      range: {
+        min: 0,
+        max: 1
+      },
+      step: 0.1,
+      start: 1
+    });
+    useEffectSlider('grayscale');
+  }
 
   if (value === 'sepia') {
-		slider.noUiSlider.updateOptions({
-			range: {
-				min: 0,
-				max: 1
-			},
-			step: 0.1,
-			start: 1
-		});
-		useEffectSlider('sepia');
-	}
+    slider.noUiSlider.updateOptions({
+      range: {
+        min: 0,
+        max: 1
+      },
+      step: 0.1,
+      start: 1
+    });
+    useEffectSlider('sepia');
+  }
 
   if (value === 'marvin') {
-		slider.noUiSlider.updateOptions({
-			range: {
-				min: 0,
-				max: 100
-			},
-			step: 1,
-			start: 100
-		});
-		useEffectSlider('invert', '%');
-	}
+    slider.noUiSlider.updateOptions({
+      range: {
+        min: 0,
+        max: 100
+      },
+      step: 1,
+      start: 100
+    });
+    useEffectSlider('invert', '%');
+  }
 
   if (value === 'phobos') {
-		slider.noUiSlider.updateOptions({
-			range: {
-				min: 0,
-				max: 3
-			},
-			step: 0.1,
-			start: 3
-		});
-		useEffectSlider('blur', 'px');
-	}
+    slider.noUiSlider.updateOptions({
+      range: {
+        min: 0,
+        max: 3
+      },
+      step: 0.1,
+      start: 3
+    });
+    useEffectSlider('blur', 'px');
+  }
 
   if (value === 'heat') {
-		slider.noUiSlider.updateOptions({
-			range: {
-				min: 1,
-				max: 3
-			},
-			step: 0.1,
-			start: 3
-		});
-		useEffectSlider('brightness');
-	}
-}
+    slider.noUiSlider.updateOptions({
+      range: {
+        min: 1,
+        max: 3
+      },
+      step: 0.1,
+      start: 3
+    });
+    useEffectSlider('brightness');
+  }
+};
 
 
 /**
@@ -130,7 +130,7 @@ const useSelectedEffects = (value) => {
  * @param {string} item
  */
 const getValueSelectedEffects = (item) => {
-	useSelectedEffects(item);
-}
+  useSelectedEffects(item);
+};
 
-export { getValueSelectedEffects }
+export { getValueSelectedEffects };

@@ -10,7 +10,6 @@ const pristine = new Pristine(uploadImgForm, {
 }, true);
 
 
-
 const validateTextHashtags = (items) => {
 
   if (items.length > 20) {
