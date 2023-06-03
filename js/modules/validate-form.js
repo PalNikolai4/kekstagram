@@ -9,21 +9,21 @@ const pristine = new Pristine(uploadImgForm, {
   successClass: 'img-upload__text--valid'
 }, true);
 
-const errorText = [];
+const errorMessageArr = [];
 
 const getErrorMessage = () => {
-	return errorText.shift();
+	return errorMessageArr.shift();
 }
 
-const pushErrorMessageInArr = (message) => {
-  errorText.push(message);
+const pushErrorMessageArr = (message) => {
+	errorMessageArr.push(message);
 }
 
 const validateHashtags = (items) => {
   let errorMessage = null;
   if (items.length > 20) {
     errorMessage = 'Максимум 20 символов';
-    pushErrorMessageInArr(errorMessage);
+    pushErrorMessageArr(errorMessage);
     return false;
   }
 
@@ -35,7 +35,7 @@ const validateHashtags = (items) => {
     const arrHashTags = items.split(' ');
     if (arrHashTags.length > 5) {
       errorMessage = 'Максимум 5 хэштегов';
-      pushErrorMessageInArr(errorMessage);
+      pushErrorMessageArr(errorMessage);
       return false;
     }
 
@@ -43,7 +43,7 @@ const validateHashtags = (items) => {
       for (let j = i + 1; j < arrHashTags.length; j++) {
         if (arrHashTags[i].toLowerCase() === arrHashTags[j].toLowerCase()) {
           errorMessage = 'Хэштеги должны быть разными';
-          pushErrorMessageInArr(errorMessage);
+          pushErrorMessageArr(errorMessage);
           return false;
         }
       }
@@ -51,7 +51,7 @@ const validateHashtags = (items) => {
       const isContains = re.test(arrHashTags[i]);
       if (!isContains) {
         errorMessage = 'Хэштеги содержат недопустимые символы и не могут состоять только из одной #';
-        pushErrorMessageInArr(errorMessage);
+        pushErrorMessageArr(errorMessage);
         return false;
       }
     }
