@@ -1,4 +1,4 @@
-import { getValueSelectedEffects } from './slider.js';
+import { useSelectedEffects } from './slider.js';
 
 const uploadPreviewImg = document.querySelector('.img-upload__preview').querySelector('img');
 const effectsList = document.querySelector('.effects__list');
@@ -17,7 +17,7 @@ const onEffectsListChange = (evt) => {
       }
     });
     uploadPreviewImg.classList.add(`effects__preview--${evt.target.value}`);
-    getValueSelectedEffects(evt.target.value);
+    useSelectedEffects(evt.target.value);
   }
 };
 

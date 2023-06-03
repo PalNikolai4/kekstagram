@@ -37,6 +37,8 @@ const useEffectSlider = (filterName, unitsMeasurements) => {
     if (filterName === 'none') {
       uploadPreviewImg.style.removeProperty('filter');
       sliderFieldset.classList.add('hidden');
+      sliderField.value = '';
+      return;
     } else {
       sliderFieldset.classList.remove('hidden');
     }
@@ -52,14 +54,6 @@ const useEffectSlider = (filterName, unitsMeasurements) => {
 
 const useSelectedEffects = (value) => {
   if (value === 'none') {
-    slider.noUiSlider.updateOptions({
-      range: {
-        min: 0,
-        max: 100
-      },
-      start: 100,
-      step: 10,
-    });
     useEffectSlider('none');
   }
 
@@ -124,13 +118,4 @@ const useSelectedEffects = (value) => {
   }
 };
 
-
-/**
- * Fn takes the value of the selected effect and passes that value to Fn useSelectedEffects
- * @param {string} item
- */
-const getValueSelectedEffects = (item) => {
-  useSelectedEffects(item);
-};
-
-export { getValueSelectedEffects };
+export { useSelectedEffects }
