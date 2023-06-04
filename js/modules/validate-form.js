@@ -11,13 +11,11 @@ const pristine = new Pristine(uploadImgForm, {
 
 const errorMessageArr = [];
 
-const getErrorMessage = () => {
-	return errorMessageArr.shift();
-}
+const getErrorMessage = () => errorMessageArr.shift();
 
 const pushErrorMessageArr = (message) => {
-	errorMessageArr.push(message);
-}
+  errorMessageArr.push(message);
+};
 
 const validateHashtags = (items) => {
   let errorMessage = null;

@@ -118,4 +118,4 @@ const useSelectedEffects = (value) => {
   }
 };
 
-export { useSelectedEffects }
+export { useSelectedEffects };
