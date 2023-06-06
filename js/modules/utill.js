@@ -129,4 +129,29 @@ const clearArr = (arr) => {
   }
 };
 
-export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, getArrayGivenLength, createElement, isEntKey, isEscKey, clearArr };
+/**
+ * Fn shows an error message if it was not possible to get data from the server
+ */
+const showErrorMessage = () => {
+  const errorMessage = createElement('div', 'error-message', 'Произошла ошибка загрузки файлов. Перезагрузите страницу.');
+  errorMessage.style.backgroundColor = 'red';
+  errorMessage.style.borderRadius = '10px';
+  errorMessage.style.fontSize = '20px';
+  errorMessage.style.left = 0;
+  errorMessage.style.margin = '0 auto';
+  errorMessage.style.padding = '15px 5px';
+  errorMessage.style.position = 'absolute';
+  errorMessage.style.right = 0;
+  errorMessage.style.textAlign = 'center';
+  errorMessage.style.textTransform = 'none';
+  errorMessage.style.top = '10%';
+  errorMessage.style.width = '50%';
+  errorMessage.style.zIndex = 10;
+  document.body.append(errorMessage);
+
+  setTimeout(() => {
+    errorMessage.remove();
+  }, 5000);
+};
+
+export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, getArrayGivenLength, createElement, isEntKey, isEscKey, clearArr, showErrorMessage };
