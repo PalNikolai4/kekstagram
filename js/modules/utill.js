@@ -147,11 +147,10 @@ const showErrorMessageGetData = () => {
   errorMessage.style.top = '10%';
   errorMessage.style.width = '50%';
   errorMessage.style.zIndex = 10;
-  document.body.append(showErrorMessageGetData);
-
   setTimeout(() => {
     errorMessage.remove();
   }, 5000);
+  document.body.append(errorMessage);
 };
 
 const blockButtonUploadData = () => {

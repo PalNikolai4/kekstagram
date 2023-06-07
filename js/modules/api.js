@@ -1,13 +1,15 @@
-const createLoader = (onSuccess, onFail) => () => fetch('https://25.javascript.pages.academy/kekstagram/data')
+const createLoader = (onSuccess, onFail) => () => {
+  return fetch('https://25.javascript.pages.academy/kekstagram/data')
   .then((response) => {
     if (response.ok) {
       return response.json();
+    } else {
+      throw new Error();
     }
-    onFail();
-    throw new Error(`${response.ok} ${response.status}`);
   })
   .then((data) => onSuccess(data))
-  .catch((err) => console.log(err));
+  .catch(() => onFail());
+}
 
 
 const sendData = (onSucces, onFail, body) => {
