@@ -1,18 +1,17 @@
 import { addClickHandlerthumbnailsOnPage } from './modules/gallery.js';
 import { createLoader } from './modules/api.js';
-import { showErrorMessage } from './modules/utill.js';
+import { showErrorMessageGetData } from './modules/utill.js';
+import { sendFormData } from './modules/validate-form.js';
 import './modules/form.js';
 
-
-// start point!!!!!!!!!!!!!!!!!!!!!!!!!!!
-const getData = createLoader(addClickHandlerthumbnailsOnPage, showErrorMessage);
+const getData = createLoader(addClickHandlerthumbnailsOnPage, showErrorMessageGetData);
 getData();
-
-
+sendFormData();
 /*
 Примечания.
 
-1. Измененния в разметке:
+1. Самовольные решения.
+    Измененния в разметке:
   - В элементе <div class="social__comment-count"> обернул в <span class="comments-count-show"> число, показывающее
     количество отображённых комментариев из общего количества. Значение динамически изменяется скриптом
     (модуль full-picture.js -> Fn getCommentsCountShow);
@@ -25,7 +24,14 @@ getData();
     в поле input не высвечивается. Пользователю придётся догадываться в чём проблема. Это неявное поведение.
   - maxlength в атрибутах обоих полей не указывал намеренно. Курс рассчитан в первую очередь на JS, а не на разметку.
 
-2. Доработать:
+    Отступление от требований ТЗ:
+  - Вопреки п. 3.5. ТЗ: "Если при отправке данных произошла ошибка запроса, нужно показать соответствующее сообщение.
+    Сообщение должно исчезать после нажатия на кнопки .error__button..."
+    При нажатии на кнопку .error__button сообщение исчезает, но сразу открывается модальное окно с выбором и редактированием
+    фотографии, что не было указано в ТЗ.
+    Реализовано: utill.js -> в функции onErrorMessageButtonClick, функцией openFormEditImg.
+
+  2. Доработать:
   - Модуль full-picture.js -> сделать рефактор Fn drawComments. В особенности вынести FN из тела addEventListener.
   - Модуль scale.js -> Fn removeAllEventScale -> export to events-form.js in Fn closeFormEditImg - обработчики при закрытии
     окна редактирования фотографии висят. Должны быть удалены!

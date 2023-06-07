@@ -1,3 +1,7 @@
+import { sendData } from './api.js';
+import { closeFormEditImg } from './events-form.js';
+import { blockButtonUploadData, unBlockButtonUploadData } from './utill.js';
+import { showSuccessUploadMessage, showErrorUploadMessage } from './utill.js';
 const uploadImgForm = document.querySelector('#upload-select-image');
 
 const pristine = new Pristine(uploadImgForm, {
@@ -59,12 +63,31 @@ const validateHashtags = (items) => {
 
 pristine.addValidator(uploadImgForm.querySelector('.text__hashtags'), validateHashtags, getErrorMessage);
 
-
-// #first #second#third #fourth
 const validateDescription = (item) => item.length <= 140;
 pristine.addValidator(uploadImgForm.querySelector('.text__description'), validateDescription, 'Максимум 140 символов');
 
-uploadImgForm.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  pristine.validate();
-});
+uploadImgForm.addEventListener('input', () => pristine.validate() ? unBlockButtonUploadData() : blockButtonUploadData());
+
+const sendFormData = () => {
+  uploadImgForm.addEventListener('submit', (evt) => {
+    blockButtonUploadData();
+    evt.preventDefault();
+    if (pristine.validate()) {
+      sendData(
+        () => { // это 1 аргумент sendData - onSucces
+          unBlockButtonUploadData();
+          closeFormEditImg();
+          showSuccessUploadMessage();
+        },
+        () => { // это 2 аргумент sendData - onFail
+          unBlockButtonUploadData();
+          closeFormEditImg();
+          showErrorUploadMessage();
+        },
+        new FormData(evt.target) // это 3 аргумент sendData - body
+      );
+    }
+  });
+};
+
+export { sendFormData };

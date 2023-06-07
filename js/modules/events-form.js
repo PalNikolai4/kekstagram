@@ -1,7 +1,7 @@
 import { isEscKey } from './utill.js';
 import { editScalePhoto, removeAllEventScale } from './photo editing fn/scale.js';
 import { addEffectUploadPreviewImg, removeEffectUploadPreviewImg } from './photo editing fn/effects.js';
-import './validate-form.js';
+import { useSelectedEffects } from './photo editing fn/slider.js';
 
 const uploadImgForm = document.querySelector('#upload-select-image');
 const cancelEditImgButton = document.querySelector('.img-upload__cancel');
@@ -34,7 +34,11 @@ const openFormEditImg = () => {
   addEffectUploadPreviewImg();
 };
 
-const resetUploadFileInput = () => { document.querySelector('#upload-file').value = ''; };
+const resetUploadFileInput = () => {
+  uploadImgForm.reset();
+  useSelectedEffects('none');
+  document.querySelector('.img-upload__preview').querySelector('img').removeAttribute('class');
+};
 
 function closeFormEditImg() {
   hideFormEditContainer();
@@ -45,4 +49,4 @@ function closeFormEditImg() {
   resetUploadFileInput();
 }
 
-export { openFormEditImg };
+export { openFormEditImg, closeFormEditImg };

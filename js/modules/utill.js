@@ -132,7 +132,7 @@ const clearArr = (arr) => {
 /**
  * Fn shows an error message if it was not possible to get data from the server
  */
-const showErrorMessage = () => {
+const showErrorMessageGetData = () => {
   const errorMessage = createElement('div', 'error-message', 'Произошла ошибка загрузки файлов. Перезагрузите страницу.');
   errorMessage.style.backgroundColor = 'red';
   errorMessage.style.borderRadius = '10px';
@@ -147,11 +147,76 @@ const showErrorMessage = () => {
   errorMessage.style.top = '10%';
   errorMessage.style.width = '50%';
   errorMessage.style.zIndex = 10;
-  document.body.append(errorMessage);
+  document.body.append(showErrorMessageGetData);
 
   setTimeout(() => {
     errorMessage.remove();
   }, 5000);
 };
 
-export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, getArrayGivenLength, createElement, isEntKey, isEscKey, clearArr, showErrorMessage };
+const blockButtonUploadData = () => {
+  document.querySelector('.img-upload__submit').disabled = true;
+};
+
+const unBlockButtonUploadData = () => {
+  document.querySelector('.img-upload__submit').disabled = false;
+};
+
+// Successful image upload message
+const onSuccessMessageClick = (evt) => {
+  if (evt.target.matches('.success__button') || !evt.target.closest('.success__inner')) {
+    closeSuccessMessage();
+  }
+};
+
+const onSuccessMessageEsc = (evt) => {
+  if (isEscKey(evt)) {
+    closeSuccessMessage();
+  }
+};
+
+const showSuccessUploadMessage = () => {
+  const template = document.querySelector('#success').content.querySelector('.success');
+  const sectionSucces = template.cloneNode(true);
+  document.addEventListener('click', onSuccessMessageClick);
+  document.addEventListener('keydown', onSuccessMessageEsc);
+  document.body.append(sectionSucces);
+};
+
+const closeSuccessMessage = () => {
+  document.querySelector('.success').remove();
+  document.removeEventListener('click', onSuccessMessageClick);
+  document.removeEventListener('keydown', onSuccessMessageEsc);
+};
+
+
+// Image upload error message
+const onErrorMessageClick = (evt) => {
+  if (evt.target.matches('.error__button') || !evt.target.closest('.error__inner')) {
+    closeErrorUploadMessage();
+  }
+};
+
+const onErrorMessageEscKeydown = (evt) => {
+  if (isEscKey(evt)) {
+    closeErrorUploadMessage();
+  }
+};
+
+const showErrorUploadMessage = () => {
+  const template = document.querySelector('#error').content.querySelector('.error');
+  const sectionError = template.cloneNode(true);
+  document.addEventListener('click', onErrorMessageClick);
+  document.addEventListener('keydown', onErrorMessageEscKeydown);
+  document.body.append(sectionError);
+};
+
+const closeErrorUploadMessage = () => {
+  document.querySelector('.error').remove();
+  document.removeEventListener('click', onErrorMessageClick);
+  document.removeEventListener('keydown', onErrorMessageEscKeydown);
+};
+
+export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, getArrayGivenLength,
+  createElement, isEntKey, isEscKey, clearArr, showErrorMessageGetData, blockButtonUploadData, unBlockButtonUploadData,
+  showSuccessUploadMessage, showErrorUploadMessage };
