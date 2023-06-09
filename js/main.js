@@ -1,10 +1,15 @@
-import { addClickHandlerthumbnailsOnPage } from './modules/gallery.js';
+import { addClickHandlerthumbnailsOnPage, useFilter } from './modules/gallery.js';
 import { createLoader } from './modules/api.js';
-import { showErrorMessageGetData } from './modules/utill.js';
+import { showErrorMessageGetData, showImgFilters } from './modules/utill.js';
 import { sendFormData } from './modules/validate-form.js';
 import './modules/form.js';
 
-const getData = createLoader(addClickHandlerthumbnailsOnPage, showErrorMessageGetData);
+const getData = createLoader((data) => {
+  addClickHandlerthumbnailsOnPage(data);
+  showImgFilters(data);
+  useFilter(data);
+}, showErrorMessageGetData);
+
 getData();
 sendFormData();
 /*
@@ -23,13 +28,6 @@ sendFormData();
     В двух случаях: 1 - input с ошибкой, textarea - нет; 2 - input с ошибкой, textarea - тоже - сообщение об ошибке
     в поле input не высвечивается. Пользователю придётся догадываться в чём проблема. Это неявное поведение.
   - maxlength в атрибутах обоих полей не указывал намеренно. Курс рассчитан в первую очередь на JS, а не на разметку.
-
-    Отступление от требований ТЗ:
-  - Вопреки п. 3.5. ТЗ: "Если при отправке данных произошла ошибка запроса, нужно показать соответствующее сообщение.
-    Сообщение должно исчезать после нажатия на кнопки .error__button..."
-    При нажатии на кнопку .error__button сообщение исчезает, но сразу открывается модальное окно с выбором и редактированием
-    фотографии, что не было указано в ТЗ.
-    Реализовано: utill.js -> в функции onErrorMessageButtonClick, функцией openFormEditImg.
 
   2. Доработать:
   - Модуль full-picture.js -> сделать рефактор Fn drawComments. В особенности вынести FN из тела addEventListener.

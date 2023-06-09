@@ -121,13 +121,19 @@ const isEscKey = (evt) => evt.key === 'Escape';
  * Fn takes an array.length > 0, return array.length === 0
  * @param {array} arr
  */
-const clearArr = (arr) => {
+const clearArrComments = (arr) => {
   let i = 0;
   while (arr.length > 0) {
     const elem = arr.shift();
     i++;
   }
 };
+
+const clearArr = (arr) => {
+  arr.forEach(element => {
+    element.remove();
+  });
+}
 
 /**
  * Fn shows an error message if it was not possible to get data from the server
@@ -216,6 +222,10 @@ const closeErrorUploadMessage = () => {
   document.removeEventListener('keydown', onErrorMessageEscKeydown);
 };
 
+const showImgFilters = () => {
+  document.querySelector('.img-filters').classList.remove('img-filters--inactive');
+}
+
 export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, getArrayGivenLength,
-  createElement, isEntKey, isEscKey, clearArr, showErrorMessageGetData, blockButtonUploadData, unBlockButtonUploadData,
-  showSuccessUploadMessage, showErrorUploadMessage };
+  createElement, isEntKey, isEscKey, clearArr, clearArrComments, showErrorMessageGetData, blockButtonUploadData, unBlockButtonUploadData,
+  showSuccessUploadMessage, showErrorUploadMessage, showImgFilters };

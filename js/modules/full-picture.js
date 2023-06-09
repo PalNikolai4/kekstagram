@@ -1,6 +1,6 @@
 import { createElement } from './utill.js';
 import { openFullPhoto } from './events-gallery.js';
-import { clearArr } from './utill.js';
+import { clearArrComments } from './utill.js';
 
 const bigPictureContainer = document.querySelector('.big-picture');
 const socialCommentsList = bigPictureContainer.querySelector('.social__comments');
@@ -53,7 +53,7 @@ const addFiveComments = (items) => {
     temporaryStorage.push(item);
   }
   createComments(temporaryStorage);
-  clearArr(temporaryStorage);
+  clearArrComments(temporaryStorage);
 };
 
 /**
@@ -67,7 +67,7 @@ const addAllComments = (items) => {
     temporaryStorage.push(item);
   }
   createComments(temporaryStorage);
-  clearArr(temporaryStorage);
+  clearArrComments(temporaryStorage);
 };
 
 const getCommentsCountShow = () => {
