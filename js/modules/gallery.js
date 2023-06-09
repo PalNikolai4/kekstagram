@@ -15,14 +15,14 @@ const addClickHandlerthumbnailsOnPage = (dataArr) => {
 const filtersForm = document.querySelector('.img-filters__form');
 const onFiltersFormButtonClick = (evt) => {
   const buttons = filtersForm.querySelectorAll('.img-filters__button');
-  buttons.forEach(button => {
+  buttons.forEach((button) => {
     const activeClass = button.classList.contains('img-filters__button--active');
     if (activeClass) {
       button.classList.remove('img-filters__button--active');
     }
   });
   evt.target.classList.add('img-filters__button--active');
-}
+};
 filtersForm.addEventListener('click', onFiltersFormButtonClick);
 
 const useFilter = (arr) => {
@@ -44,13 +44,11 @@ const useFilter = (arr) => {
     }
     if (evt.target.id === 'filter-discussed') {
       clearArr(document.querySelectorAll('.pictures .picture'));
-      const sortArr = cloneArr.sort((a, b) => {
-       return b.comments.length - a.comments.length
-      })
+      const sortArr = cloneArr.sort((a, b) => b.comments.length - a.comments.length);
       addClickHandlerthumbnailsOnPage(sortArr);
     }
   });
 
-}
+};
 
 export { addClickHandlerthumbnailsOnPage, useFilter };

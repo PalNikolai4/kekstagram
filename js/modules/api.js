@@ -1,5 +1,4 @@
-const createLoader = (onSuccess, onFail) => () => {
-  return fetch('https://25.javascript.pages.academy/kekstagram/data')
+const createLoader = (onSuccess, onFail) => () => fetch('https://25.javascript.pages.academy/kekstagram/data')
   .then((response) => {
     if (response.ok) {
       return response.json();
@@ -9,7 +8,6 @@ const createLoader = (onSuccess, onFail) => () => {
   })
   .then((data) => onSuccess(data))
   .catch(() => onFail());
-}
 
 
 const sendData = (onSucces, onFail, body) => {

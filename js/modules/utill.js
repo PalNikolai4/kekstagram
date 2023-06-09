@@ -130,10 +130,10 @@ const clearArrComments = (arr) => {
 };
 
 const clearArr = (arr) => {
-  arr.forEach(element => {
+  arr.forEach((element) => {
     element.remove();
   });
-}
+};
 
 /**
  * Fn shows an error message if it was not possible to get data from the server
@@ -188,11 +188,11 @@ const showSuccessUploadMessage = () => {
   document.body.append(sectionSucces);
 };
 
-const closeSuccessMessage = () => {
+function closeSuccessMessage () {
   document.querySelector('.success').remove();
   document.removeEventListener('click', onSuccessMessageClick);
   document.removeEventListener('keydown', onSuccessMessageEsc);
-};
+}
 
 
 // Image upload error message
@@ -216,15 +216,15 @@ const showErrorUploadMessage = () => {
   document.body.append(sectionError);
 };
 
-const closeErrorUploadMessage = () => {
+function closeErrorUploadMessage () {
   document.querySelector('.error').remove();
   document.removeEventListener('click', onErrorMessageClick);
   document.removeEventListener('keydown', onErrorMessageEscKeydown);
-};
+}
 
 const showImgFilters = () => {
   document.querySelector('.img-filters').classList.remove('img-filters--inactive');
-}
+};
 
 export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, getArrayGivenLength,
   createElement, isEntKey, isEscKey, clearArr, clearArrComments, showErrorMessageGetData, blockButtonUploadData, unBlockButtonUploadData,
