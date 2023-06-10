@@ -25,7 +25,7 @@ const sendData = (onSucces, onFail, body) => {
         throw new Error();
       }
     })
-    .catch(() => onFail()); // проставить оператор вызова
+    .catch(() => onFail());
 };
 
 

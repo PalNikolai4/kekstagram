@@ -1,12 +1,4 @@
 /**
- * Fn checks the length of a string
- * @param {string} string
- * @param {number} maxLength
- * @returns {boolean}
- */
-const checkStringLength = (string = '', maxLength = 100) => string.toString().length <= maxLength;
-
-/**
  * Fn returns random positive integer in the range from min to max. If quantity = true, Fn return quantity.
  * @param {number} min default = 0
  * @param {number} max default = 100
@@ -90,16 +82,6 @@ const getRandomUniqueNum = (min, max) => {
 const getRandomElemArray = (array) => array[getRandomPositiveInt(0, array.length - 1)];
 
 /**
- * Fn returns an array with a length ranging from min to max. If quantity = true, Fn returns an array with a length = quantity.
- * @param {*} fn
- * @param {*} min
- * @param {*} max
- * @param {*} quantity
- * @returns
- */
-const getArrayGivenLength = (fn, min = 1, max = 25, quantity) => Array.from({ length: getRandomPositiveInt(min, max, quantity) }, fn);
-
-/**
  * Fn takes an HTML tag name and returns an element
  * @param {string} tagName
  * @param {string} tagClass
@@ -112,8 +94,6 @@ const createElement = (tagName, tagClass, content) => {
   if (content) { element.textContent = content; }
   return element;
 };
-
-const isEntKey = (evt) => evt.key === 'Enter';
 
 const isEscKey = (evt) => evt.key === 'Escape';
 
@@ -226,6 +206,6 @@ const showImgFilters = () => {
   document.querySelector('.img-filters').classList.remove('img-filters--inactive');
 };
 
-export { checkStringLength, getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, getArrayGivenLength,
-  createElement, isEntKey, isEscKey, clearArr, clearArrComments, showErrorMessageGetData, blockButtonUploadData, unBlockButtonUploadData,
-  showSuccessUploadMessage, showErrorUploadMessage, showImgFilters };
+export { getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, createElement, isEscKey, clearArr,
+  clearArrComments, showErrorMessageGetData, blockButtonUploadData, unBlockButtonUploadData, showSuccessUploadMessage,
+  showErrorUploadMessage, showImgFilters };

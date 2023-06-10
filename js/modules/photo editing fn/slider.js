@@ -1,7 +1,7 @@
 const sliderFieldset = document.querySelector('.img-upload__effect-level');
 const sliderField = document.querySelector('.effect-level__value');
 const slider = document.querySelector('.effect-level__slider');
-const uploadPreviewImg = document.querySelector('.img-upload__preview').querySelector('img');
+const uploadPreviewImg = document.querySelector('.img-upload__preview img');
 
 noUiSlider.create(slider, {
   range: {
@@ -30,9 +30,9 @@ sliderFieldset.classList.add('hidden');
 /**
  * Fn takes the value of the selected effect, the unit of measurement (optional). The value of the slider changes depending on the selected effect. The value of the slider is passed to the "filter" attribute of the photo
  * @param {string} filterName
- * @param {string} unitsMeasurements
+ * @param {string} isUnitsMeasurements
  */
-const useEffectSlider = (filterName, unitsMeasurements) => {
+const useEffectSlider = (filterName, isUnitsMeasurements) => {
   slider.noUiSlider.on('update', () => {
     if (filterName === 'none') {
       uploadPreviewImg.style.removeProperty('filter');
@@ -43,8 +43,8 @@ const useEffectSlider = (filterName, unitsMeasurements) => {
       sliderFieldset.classList.remove('hidden');
     }
 
-    if (unitsMeasurements) {
-      uploadPreviewImg.style.filter = `${filterName}(${slider.noUiSlider.get()}${unitsMeasurements})`;
+    if (isUnitsMeasurements) {
+      uploadPreviewImg.style.filter = `${filterName}(${slider.noUiSlider.get()}${isUnitsMeasurements})`;
     } else {
       uploadPreviewImg.style.filter = `${filterName}(${slider.noUiSlider.get()})`;
     }

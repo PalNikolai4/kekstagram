@@ -1,7 +1,7 @@
 const scaleSmallerButton = document.querySelector('.scale__control--smaller');
 const scaleBiggerButton = document.querySelector('.scale__control--bigger');
 const scaleField = document.querySelector('.scale__control--value');
-const uploadPreviewImg = document.querySelector('.img-upload__preview').querySelector('img');
+const uploadPreviewImg = document.querySelector('.img-upload__preview img');
 
 /**
  * Fn applies the resulting value to the photo

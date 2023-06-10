@@ -1,6 +1,6 @@
 import { useSelectedEffects } from './slider.js';
 
-const uploadPreviewImg = document.querySelector('.img-upload__preview').querySelector('img');
+const uploadPreviewImg = document.querySelector('.img-upload__preview img');
 const effectsList = document.querySelector('.effects__list');
 
 /**

@@ -1,6 +1,5 @@
-import { createElement } from './utill.js';
 import { openFullPhoto } from './events-gallery.js';
-import { clearArrComments } from './utill.js';
+import { createElement, clearArrComments } from './utill.js';
 
 const bigPictureContainer = document.querySelector('.big-picture');
 const socialCommentsList = bigPictureContainer.querySelector('.social__comments');
@@ -17,15 +16,12 @@ const deleteAllComments = () => {
  */
 const createComment = ({ avatar, name, message }) => {
   const userComment = createElement('li', 'social__comment');
-
   const userCommentPicture = createElement('img', 'social__picture');
   userCommentPicture.src = avatar;
   userCommentPicture.alt = name;
   userComment.append(userCommentPicture);
-
   const userCommentText = createElement('p', 'social__text', message);
   userComment.append(userCommentText);
-
   return userComment;
 };
 
@@ -105,7 +101,6 @@ const drawComments = (items) => {
     addFiveComments(cloneArr);
     getCommentsCountShow();
     commentsLoaderButton.addEventListener('click', () => {
-
       if (cloneArr.length > 5) {
         addFiveComments(cloneArr);
       } else if (cloneArr.length === 5) {
@@ -124,7 +119,7 @@ const drawComments = (items) => {
  * @param {object} param0
  */
 const drawFullPhoto = ({ url, description, likes, comments }) => {
-  bigPictureContainer.querySelector('.big-picture__img').querySelector('img').src = url;
+  bigPictureContainer.querySelector('.big-picture__img img').src = url;
   bigPictureContainer.querySelector('.likes-count').textContent = likes;
   bigPictureContainer.querySelector('.comments-count').textContent = comments.length;
   bigPictureContainer.querySelector('.social__caption').textContent = description;

@@ -21,19 +21,19 @@ const onCloseFullPhotoEscKeydown = (evt) => {
   }
 };
 
-closeFullPhotoButton.addEventListener('click', () => {
-  closeFullPhoto();
-});
+const onCloseFullPhotoButton = () => { closeFullPhoto(); };
 
 const openFullPhoto = () => {
   showFullPhotoContainer();
   document.addEventListener('keydown', onCloseFullPhotoEscKeydown);
+  closeFullPhotoButton.addEventListener('click', onCloseFullPhotoButton);
 };
 
 function closeFullPhoto() {
   hideFullPhotoContainer();
   deleteAllComments();
   document.removeEventListener('keydown', onCloseFullPhotoEscKeydown);
+  closeFullPhotoButton.removeEventListener('click', onCloseFullPhotoButton);
 }
 
 
