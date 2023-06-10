@@ -206,6 +206,14 @@ const showImgFilters = () => {
   document.querySelector('.img-filters').classList.remove('img-filters--inactive');
 };
 
+const debounce = (cb, delay) => {
+  let timeoutID;
+  return (arg) => {
+    clearTimeout(timeoutID);
+    timeoutID = setTimeout(() => cb(arg), delay);
+  };
+};
+
 export { getRandomPositiveInt, getUniqueNum, getRandomUniqueNum, getRandomElemArray, createElement, isEscKey, clearArr,
   clearArrComments, showErrorMessageGetData, blockButtonUploadData, unBlockButtonUploadData, showSuccessUploadMessage,
-  showErrorUploadMessage, showImgFilters };
+  showErrorUploadMessage, showImgFilters, debounce };

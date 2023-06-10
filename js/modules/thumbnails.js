@@ -14,5 +14,4 @@ const getArrayThumbnails = (thumbnails) => {
   picturesContainer.append(fragment);
 };
 
-
 export { getArrayThumbnails };

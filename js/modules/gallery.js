@@ -3,10 +3,10 @@ import { getArrayThumbnails } from './thumbnails.js';
 import { clearArr, getRandomUniqueNum } from './utill.js';
 const filtersForm = document.querySelector('.img-filters__form');
 
-/**
- * Fn adds a 'click' event to all thumbnails on the page (view full image)
- * @param {Array} dataArr
- */
+// /**
+//  * Fn adds a 'click' event to all thumbnails on the page (view full image)
+//  * @param {Array} dataArr
+//  */
 const addClickHandlerthumbnailsOnPage = (dataArr) => {
   getArrayThumbnails(dataArr);
   const thumbnailsOnPage = document.querySelector('.pictures').querySelectorAll('a.picture');
@@ -17,9 +17,9 @@ const addClickHandlerthumbnailsOnPage = (dataArr) => {
   }
 };
 
-/**
- * Fn removes and adds the active class to the filter buttons when they are clicked
- */
+// /**
+//  * Fn removes and adds the active class to the filter buttons when they are clicked
+//  */
 const onFiltersFormButtonClick = (evt) => {
   const buttons = filtersForm.querySelectorAll('.img-filters__button');
   buttons.forEach((button) => {
@@ -37,8 +37,8 @@ filtersForm.addEventListener('click', onFiltersFormButtonClick);
  * @param {Array} arr
  */
 const useFilter = (arr) => {
+  const cloneArr = arr.slice();
   filtersForm.addEventListener('click', (evt) => {
-    const cloneArr = arr.slice();
     clearArr(document.querySelectorAll('.pictures .picture'));
 
     if (evt.target.id === 'filter-default') {

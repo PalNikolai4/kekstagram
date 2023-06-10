@@ -1,12 +1,12 @@
-import { addClickHandlerthumbnailsOnPage, useFilter } from './modules/gallery.js';
-import { createLoader } from './modules/api.js';
 import { showErrorMessageGetData, showImgFilters } from './modules/utill.js';
+import { addClickHandlerthumbnailsOnPage, useFilter } from './modules/gallery.js';
 import { sendFormData } from './modules/validate-form.js';
+import { createLoader } from './modules/api.js';
 import './modules/form.js';
 
 const getData = createLoader((data) => {
-  addClickHandlerthumbnailsOnPage(data);
   showImgFilters(data);
+  addClickHandlerthumbnailsOnPage(data);
   useFilter(data);
 }, showErrorMessageGetData);
 
@@ -15,8 +15,7 @@ sendFormData();
 /*
 Примечания.
 
-1. Самовольные решения.
-    Измененния в разметке:
+1. Измененния в разметке:
   - В элементе <div class="social__comment-count"> обернул в <span class="comments-count-show"> число, показывающее
     количество отображённых комментариев из общего количества. Значение динамически изменяется скриптом
     (модуль full-picture.js -> Fn getCommentsCountShow);
@@ -30,6 +29,7 @@ sendFormData();
   - maxlength в атрибутах обоих полей не указывал намеренно. Курс рассчитан в первую очередь на JS, а не на разметку.
 
   2. Доработать:
+  - debounce!!!
   - Модуль full-picture.js -> сделать рефактор Fn drawComments. В особенности вынести FN из тела addEventListener.
   - Модуль scale.js -> Fn removeAllEventScale -> export to events-form.js in Fn closeFormEditImg - обработчики при закрытии
     окна редактирования фотографии висят. Должны быть удалены!
